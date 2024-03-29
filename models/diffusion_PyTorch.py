@@ -31,10 +31,12 @@ class PCD(nn.Module):  # Point Cloud Diffusion
 
         # Diffusion Parameters, for the denoising and score learning
         self.Set_alpha_beta_posterior()
-        print(self.alphas_cumprod)
+        # print(self.alphas_cumprod)
 
         # learnable parameters, or layer that learns data projection
         self.projection = self.GaussianFourierProjection(scale=16)
+        self.loss_tracker = nn.MSELoss()  # Example loss function
+
 
     def Set_alpha_beta_posterior(self):
         # The math behind diffusion
@@ -79,8 +81,22 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         return embedding
 
     def forward(self, inputs_time, inputs_cond, inputs_cluster, inputs_mask):
-        self.projection = self.GaussianFourierProjection(scale=16)
-        self.loss_tracker = nn.MSELoss()  # Example loss function
+
+        #Transformation applied to conditional inputs
+        # inputs_time = Input((1))
+        # inputs_cond = Input((self.num_cond)) # shape=(None, 2) 2 
+        # inputs_cluster = Input((self.num_cluster)) # shape=(None, 2) 2 
+        # inputs_mask = Input((None,1)) #mask to identify zero-padded objects       
+
+        inputs_time = torch.tensor(1)
+        inputs_cond = torch.tensor((self.num_cond))
+        inputs_cluster = torch.tensor(self.num_cluster)
+
+        # TF version in (None,1). Torch can handle dynamic
+        # input size, but the feature size (second dim)
+        # must match. The mask has feature dim = 1
+        # the first dim will be n_cluster or n_part
+        inputs_mask = torch.tensor((1, 1))
 
         graph_conditional = self.Embedding(inputs_time, self.projection)
         cluster_conditional = self.Embedding(inputs_time, self.projection)
@@ -93,6 +109,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
             torch.cat([cluster_conditional, inputs_cond], -1))
         cluster_conditional = self.activation(cluster_conditional)
 
+        #FIXME: TF version is inputs, outputs = DeepSetsAtt
         outputs = DeepSetsAtt(
             num_feat=self.num_embed,
             time_embedding=graph_conditional,
@@ -104,11 +121,10 @@ class PCD(nn.Module):  # Point Cloud Diffusion
 
         return outputs
 
+    # def count_parameters(model):
+    #     total_params = sum(p.numel() for p in model.parameters())
+    #     return total_params
 
-
-    def count_parameters(model):
-        total_params = sum(p.numel() for p in model.parameters())
-        return total_params
-
-    # num_params = count_parameters(self.model_part) 
-    # print("Number of parameters: {:,}".format(num_params)) # Number of parameters: 314,372
+    # num_params = count_parameters(self.model_part)
+    # print("Number of parameters: {:,}".format(num_params))
+    # Number of parameters: 314,372
