@@ -4,7 +4,7 @@ import torch.optim as optim
 import sys
 import yaml
 sys.path.insert(1, '../models/')
-from diffusion_PyTorch import PCD
+from point_cloud_diffusion import PCD
 # import diffusion_PyTorch
 
 # Assuming the GSGM class is already defined

@@ -40,10 +40,10 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # keras.metrics.Mean(name="loss")
 
         # DEFINE THE INPUT LAYERS
-        inputs_time = torch.tensor(1)
-        inputs_cond = torch.tensor((self.num_cond))
-        inputs_cluster = torch.tensor(self.num_cluster)
-        inputs_mask = torch.tensor((1, 1)) # second eleme = feature size
+        self.inputs_time = torch.tensor(1)
+        self.inputs_cond = torch.tensor((self.num_cond))
+        self.inputs_cluster = torch.tensor(self.num_cluster)
+        self.inputs_mask = torch.tensor((1, 1)) # second eleme = feature size
         # ^TF version in (None,1). Torch can handle dynamic
         # input size, but the feature size (second dim)
         # must match. The mask has feature dim = 1
@@ -63,17 +63,17 @@ class PCD(nn.Module):  # Point Cloud Diffusion
 
         # the first dim will be n_cluster or n_part
 
-    def forward(self, inputs_time, inputs_cond, inputs_cluster, inputs_mask):
+    def forward(self, input_data):
 
         # Graph Forward Pass
-        graph_conditional = self.Embedding(inputs_time, self.projection)
-        graph_inputs = torch.cat([graph_conditional,inputs_cluster,inputs_cond],-1)
+        graph_conditional = self.graph_embedding1(self.inputs_time, self.projection)
+        graph_inputs = torch.cat([graph_conditional,self.inputs_cluster,self.inputs_cond],-1)
         graph_conditional = nn.Linear(graph_inputs, self.num_embed)
         graph_conditional = self.activation(graph_conditional)
 
         # Cluster Forward Pass
-        cluster_conditional = self.Embedding(inputs_time, self.projection)
-        cluster_inputs = torch.cat([cluster_conditional, inputs_cond], -1)
+        cluster_conditional = self.cluster_embedding1(self.inputs_time, self.projection)
+        cluster_inputs = torch.cat([cluster_conditional, self.inputs_cond], -1)
         cluster_conditional = nn.Linear(cluster_inputs, self.num_embed)
         cluster_conditional = self.activation(cluster_conditional)
 
@@ -83,7 +83,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
             num_heads=1,
             num_transformer=8,
             projection_dim=64,
-            mask=inputs_mask,
+            mask=self.inputs_mask,
         )
 
         # self.model_part = keras.Model(inputs=[inputs,inputs_time,inputs_cluster,inputs_cond,inputs_mask],outputs=outputs)
@@ -145,12 +145,6 @@ class Embedding(nn.Module):
         embedding = F.leaky_relu(embedding, 0.01)
         embedding = self.dense2(embedding)
         return embedding
-
-
-
-
-
-
 
 
         # angle shape = (None, 16)

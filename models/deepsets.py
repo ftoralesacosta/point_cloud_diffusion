@@ -7,6 +7,7 @@ from torch.nn.utils.rnn import pad_sequence
 
 class DeepSetsAtt(nn.Module):
     def __init__(self, num_feat, time_embedding, num_heads=4, num_transformer=4, projection_dim=32):
+
         super(DeepSetsAtt, self).__init__()
 
         self.num_feat = num_feat
