@@ -1,5 +1,5 @@
 
-### Fast Point Cloud Diffusion for EIC Calorimeters
+# Fast Point Cloud Diffusion for EIC Calorimeters
 This repository is a PyTorch implementation of the Fast Point Cload Diffusion repo for the EIC: https://github.com/ftoralesacosta/GSGM_for_EIC_Calo/tree/main.
 
 Credit to Vinicius Mikuni for the original fast point cloud diffusion repoitory for generating jets:
