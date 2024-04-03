@@ -4,7 +4,7 @@ This repository is a PyTorch implementation of the Fast Point Cload Diffusion re
 
 Credit to Vinicius Mikuni for the original fast point cloud diffusion repoitory for generating jets:
 
-https://github.com/ViniciusMikuni/GSGM_for_EIC_Calo
+https://github.com/ViniciusMikuni/GSGM
 
 ## This repo aims to improve on the previous projects in two ways:
 
