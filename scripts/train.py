@@ -7,7 +7,7 @@ sys.path.insert(1, '../models/')
 from point_cloud_diffusion import PCD
 # import diffusion_PyTorch
 
-# Assuming the GSGM class is already defined
+# Assuming the PCD class is already defined
 config_file = "../configs/default_config.yaml"
 model = PCD(config_file=config_file)  # Initialize your model
 optimizer = optim.Adam(model.parameters(), lr=0.001)  # Use the Adam optimizer
@@ -28,6 +28,8 @@ for epoch in range(num_epochs):
     optimizer.zero_grad()  # Clear the gradients
 
     # Forward pass: Compute the model output for the input data
+
+    # exit("Not Ready model training yet!!!")
     outputs = model(train_data)
 
     # Compute the loss

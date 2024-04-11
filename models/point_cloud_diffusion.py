@@ -4,6 +4,7 @@ import yaml
 import torch.nn as nn
 from deepsets import DeepSetsAtt
 import torch.nn.functional as F
+import keras.backend as K
 
 activation = nn.LeakyReLU(0.01)
 
@@ -34,7 +35,8 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # Diffusion Parameters, for the denoising and score learning
         self.Set_alpha_beta_posterior()
 
-        self.projection = self.GaussianFourierProjection(scale=16)
+        projection_dim = 16
+        self.projection = self.GaussianFourierProjection(scale=projection_dim)
 
         self.loss_tracker = nn.MSELoss()
         # keras.metrics.Mean(name="loss")
@@ -43,40 +45,58 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.inputs_time = torch.tensor(1)
         self.inputs_cond = torch.tensor((self.num_cond))
         self.inputs_cluster = torch.tensor(self.num_cluster)
-        self.inputs_mask = torch.tensor((1, 1)) # second eleme = feature size
+        self.inputs_cluster = torch.tensor((2,2))
+        self.inputs_mask = torch.tensor((1, 1))
+        # second eleme = feature size
         # ^TF version in (None,1). Torch can handle dynamic
         # input size, but the feature size (second dim)
         # must match. The mask has feature dim = 1
 
-        # Activation function
+        FIXME: These should probably all be set to None?
+        # The forward pass should define these, and these are
+        # essentially input data of some kind
+
         self.activation = nn.LeakyReLU(0.01)
 
         # DEFNE GRAPH MODEL
-        self.graph_embedding1 = Embedding(self.num_embed)
-        self.graph_linear1 = nn.Linear(self.num_embed, self.num_embed)
+        linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
+        self.graph_embedding1 = Embedding(projection_dim, self.num_embed)
+        self.graph_linear1 = nn.Linear(linear1_input_size, self.num_embed)  
+        # FIXME: Seems like this is correct. But I'm somehow getting length 66 from the unsquuze below...
         self.graph_activation1 = self.activation
 
         # DEFINE CLUSTER MODEL
-        self.cluster_embedding1 = Embedding(self.num_embed)
+        self.cluster_embedding1 = Embedding(projection_dim, self.num_embed)
         self.cluster_linear1 = nn.Linear(self.num_embed, self.num_embed)
         self.cluster_activation1 = self.activation
 
-        # the first dim will be n_cluster or n_part
-
     def forward(self, input_data):
+
+        # Prababyl need to add more inputs to the forward function here.
+        # IN Torch, it doesn't make sense to initialize the input like in TF to None
+        # Simply set the correct size (from the config) in __init__,
+        # And then pass the input_data, and input_times + cluster stuff
 
         # Graph Forward Pass
         graph_conditional = self.graph_embedding1(self.inputs_time, self.projection)
-        graph_inputs = torch.cat([graph_conditional,self.inputs_cluster,self.inputs_cond],-1)
-        graph_conditional = nn.Linear(graph_inputs, self.num_embed)
+        print(np.shape(self.inputs_cluster))
+        print(np.shape(self.inputs_cond))
+        graph_inputs = torch.cat([graph_conditional, self.inputs_cluster.unsqueeze(0), self.inputs_cond.unsqueeze(0)],-1)
+        # FIXME: This seems wrong ^. Should be length 67, not 66!!!
+
+        print(np.shape(graph_inputs))
+        graph_conditional = self.graph_linear1(graph_inputs)
         graph_conditional = self.activation(graph_conditional)
+        print("Graph Conditional in Forward = ", graph_conditional)
+
 
         # Cluster Forward Pass
         cluster_conditional = self.cluster_embedding1(self.inputs_time, self.projection)
         cluster_inputs = torch.cat([cluster_conditional, self.inputs_cond], -1)
-        cluster_conditional = nn.Linear(cluster_inputs, self.num_embed)
+        cluster_conditional = self.cluster_linear1(cluster_inputs)
         cluster_conditional = self.activation(cluster_conditional)
 
+        # Define DeepSets Attention Layers
         inputs, outputs = DeepSetsAtt(
             num_feat=self.num_embed,
             time_embedding=graph_conditional,
@@ -85,6 +105,14 @@ class PCD(nn.Module):  # Point Cloud Diffusion
             projection_dim=64,
             mask=self.inputs_mask,
         )
+
+        print(f"inputs = {inputs}") # inputs = KerasTensor(type_spec=TensorSpec(shape=(None, None, 4), dtype=tf.float32, name='input_5'), name='input_5', description="created by layer 'input_5'")
+        print_inputs = K.print_tensor(inputs, message="Inputs after DeepSetsATT in TF = ")
+        print(f"outputs1 = {outputs}") # outputs1 = KerasTensor(type_spec=TensorSpec(shape=(None, None, 4), dtype=tf.float32, name=None), name='time_distributed_5/Reshape_1:0', description="created by layer 'time_distributed_5'")
+        print_outputs = K.print_tensor(outputs, message="outputs after DeepSetsATT in TF = ")
+        print('num_cluster', self.num_cluster) # num_cluster 2
+        
+
 
         # self.model_part = keras.Model(inputs=[inputs,inputs_time,inputs_cluster,inputs_cond,inputs_mask],outputs=outputs)
 
@@ -128,12 +156,12 @@ class PCD(nn.Module):  # Point Cloud Diffusion
 
 
 class Embedding(nn.Module):
-    def __init__(self, num_embed):
+    def __init__(self, projection_dim, num_embed):
         super(Embedding, self).__init__()
 
         self.num_embed = num_embed
-        self.dense1 = nn.Linear(2 * self.num_embed, 2 * self.num_embed)
-        self.dense2 = nn.Linear(2 * self.num_embed, self.num_embed)
+        self.dense1 = nn.Linear(2 * projection_dim, 2 * num_embed)
+        self.dense2 = nn.Linear(2 * num_embed,          num_embed)
 
 
     def forward(self, inputs, projection):
@@ -144,15 +172,10 @@ class Embedding(nn.Module):
         embedding = self.dense1(embedding)
         embedding = F.leaky_relu(embedding, 0.01)
         embedding = self.dense2(embedding)
+        print(np.shape(embedding))
+
         return embedding
 
-
-        # angle shape = (None, 16)
-        # Num embed =  64
-        # SIZE after concat sin, cos FUNCTION =  (None, 32)
-        # SIZE of Dense Layer =  (None, 128)
-        # num_embed 64
-        # SIZE dense(num_embed)*embedding=  (None, 64)
 
     # def count_parameters(model):
     #     total_params = sum(p.numel() for p in model.parameters())
