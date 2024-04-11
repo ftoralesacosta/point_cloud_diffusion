@@ -52,7 +52,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # input size, but the feature size (second dim)
         # must match. The mask has feature dim = 1
 
-        FIXME: These should probably all be set to None?
+        # FIXME: These should probably all be set to None?
         # The forward pass should define these, and these are
         # essentially input data of some kind
 
