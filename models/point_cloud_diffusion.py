@@ -8,6 +8,7 @@ import keras.backend as K
 
 activation = nn.LeakyReLU(0.01)
 
+
 class PCD(nn.Module):  # Point Cloud Diffusion
     """Score based generative model"""
 
@@ -29,7 +30,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.ema = 0.999
 
         # Diffusion TimeSteps
-        self.timesteps = torch.arange(0, self.num_steps + 1, 
+        self.timesteps = torch.arange(0, self.num_steps + 1,
                 dtype=torch.float32) / self.num_steps + 8e-3
 
         # Diffusion Parameters, for the denoising and score learning
@@ -42,35 +43,47 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # keras.metrics.Mean(name="loss")
 
         # DEFINE THE INPUT LAYERS
-        self.inputs_time = torch.tensor(1)
-        self.inputs_cond = torch.tensor((self.num_cond))
-        self.inputs_cluster = torch.tensor(self.num_cluster)
-        self.inputs_cluster = torch.tensor((2,2))
-        self.inputs_mask = torch.tensor((1, 1))
-        # second eleme = feature size
-        # ^TF version in (None,1). Torch can handle dynamic
-        # input size, but the feature size (second dim)
-        # must match. The mask has feature dim = 1
+        # self.inputs_time = torch.tensor(1)
+        # self.inputs_cond = torch.tensor((self.num_cond))
+        # self.inputs_cluster = torch.tensor(self.num_cluster)
+        # self.inputs_cluster = torch.tensor((2,2))
+        # self.inputs_mask = torch.tensor((1, 1))
+        # ^^^^^^^
+        # In torch, the only the input and output dims need  to be
+        # Specified. This is num_feat, num_clust, and cond (mask).
+        # So we don't need these lines, but do need the size, 
+        # obtained from the config file, "input_size" below
 
-        # FIXME: These should probably all be set to None?
-        # The forward pass should define these, and these are
-        # essentially input data of some kind
+        # linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
+        graph_LinearInput_size = self.num_embed + self.num_cluster + self.num_cond
+        cluster_LinearInput_size = self.num_embed + self.num_cond
 
         self.activation = nn.LeakyReLU(0.01)
 
         # DEFNE GRAPH MODEL
-        linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
         self.graph_embedding1 = Embedding(projection_dim, self.num_embed)
-        self.graph_linear1 = nn.Linear(linear1_input_size, self.num_embed)  
-        # FIXME: Seems like this is correct. But I'm somehow getting length 66 from the unsquuze below...
+        print("\n\ngraph_embedding1 = ",self.graph_embedding1)
+        self.graph_linear1 = nn.Linear(graph_LinearInput_size, self.num_embed)  
         self.graph_activation1 = self.activation
 
         # DEFINE CLUSTER MODEL
         self.cluster_embedding1 = Embedding(projection_dim, self.num_embed)
-        self.cluster_linear1 = nn.Linear(self.num_embed, self.num_embed)
+        self.cluster_linear1 = nn.Linear(cluster_LinearInput_size, self.num_embed)
         self.cluster_activation1 = self.activation
 
-    def forward(self, input_data):
+        # self.ds_attention_layer = DeepSetsAtt(
+        #     num_feat=self.num_embed,
+        #     time_embedding=graph_conditional,
+        #     num_heads=1,
+        #     num_transformer=8,
+        #     projection_dim=64)
+
+    def forward(self,
+                training_data,
+                inputs_time,
+                inputs_cluster,
+                inputs_cond,
+                inputs_mask):
 
         # Prababyl need to add more inputs to the forward function here.
         # IN Torch, it doesn't make sense to initialize the input like in TF to None
@@ -78,40 +91,28 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # And then pass the input_data, and input_times + cluster stuff
 
         # Graph Forward Pass
-        graph_conditional = self.graph_embedding1(self.inputs_time, self.projection)
-        print(np.shape(self.inputs_cluster))
-        print(np.shape(self.inputs_cond))
-        graph_inputs = torch.cat([graph_conditional, self.inputs_cluster.unsqueeze(0), self.inputs_cond.unsqueeze(0)],-1)
-        # FIXME: This seems wrong ^. Should be length 67, not 66!!!
-
-        print(np.shape(graph_inputs))
+        graph_conditional = self.graph_embedding1(inputs_time, self.projection)
+        graph_inputs = torch.cat([graph_conditional,inputs_cluster,inputs_cond],-1)
         graph_conditional = self.graph_linear1(graph_inputs)
         graph_conditional = self.activation(graph_conditional)
-        print("Graph Conditional in Forward = ", graph_conditional)
 
 
         # Cluster Forward Pass
-        cluster_conditional = self.cluster_embedding1(self.inputs_time, self.projection)
-        cluster_inputs = torch.cat([cluster_conditional, self.inputs_cond], -1)
+        cluster_conditional = self.cluster_embedding1(inputs_time, self.projection)
+        cluster_inputs = torch.cat([cluster_conditional, inputs_cond],-1)
         cluster_conditional = self.cluster_linear1(cluster_inputs)
         cluster_conditional = self.activation(cluster_conditional)
 
-        # Define DeepSets Attention Layers
-        inputs, outputs = DeepSetsAtt(
-            num_feat=self.num_embed,
-            time_embedding=graph_conditional,
-            num_heads=1,
-            num_transformer=8,
-            projection_dim=64,
-            mask=self.inputs_mask,
-        )
+        outputs = graph_conditional*cluster_conditional
 
-        print(f"inputs = {inputs}") # inputs = KerasTensor(type_spec=TensorSpec(shape=(None, None, 4), dtype=tf.float32, name='input_5'), name='input_5', description="created by layer 'input_5'")
-        print_inputs = K.print_tensor(inputs, message="Inputs after DeepSetsATT in TF = ")
-        print(f"outputs1 = {outputs}") # outputs1 = KerasTensor(type_spec=TensorSpec(shape=(None, None, 4), dtype=tf.float32, name=None), name='time_distributed_5/Reshape_1:0', description="created by layer 'time_distributed_5'")
-        print_outputs = K.print_tensor(outputs, message="outputs after DeepSetsATT in TF = ")
-        print('num_cluster', self.num_cluster) # num_cluster 2
-        
+        # Define DeepSets Attention Layers
+        # inputs, oututs = self.ds_attention_layer(inputs, 
+        #                                         inputs_mask)
+
+
+        # print(f"inputs = {inputs}")  # TF: (None, None, 4)
+        # print(f"outputs1 = {outputs}") # TF: (None, None, 4)
+
 
 
         # self.model_part = keras.Model(inputs=[inputs,inputs_time,inputs_cluster,inputs_cond,inputs_mask],outputs=outputs)
@@ -119,9 +120,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         return outputs
 
     def Set_alpha_beta_posterior(self):
-        # The math behind diffusion
-        # Cumulative alphas, s.t. you don't
-        # have to calculate noise at each step
+        # Some math behind diffusion
 
         alphas = self.timesteps / (1 + 8e-3) * np.pi / 2.0
         alphas = torch.cos(alphas)**2

@@ -3,8 +3,8 @@ import torch
 import torch.optim as optim
 import sys
 import yaml
-sys.path.insert(1, '../models/')
 from point_cloud_diffusion import PCD
+sys.path.insert(1, '/pscratch/sd/f/fernando/point_cloud_diffusion/models/')
 # import diffusion_PyTorch
 
 # Assuming the PCD class is already defined
@@ -15,8 +15,14 @@ criterion = torch.nn.MSELoss()  # Example loss function, change if necessary
 
 # Placeholder for your training data and labels
 # You will need to replace these with your actual data loading mechanism
-train_data = torch.rand(100, 1)  # Example input data
-train_labels = torch.rand(100, 1)  # Example labels/targets
+train_data = torch.rand(100, 64)  # Example input data
+train_labels = torch.rand(100, 64)  # Example labels/targets
+
+# FIXME: Update to grab dims from config
+inputs_time = torch.rand(1)  # FIXME: probably need (batch,1)
+inputs_cond = torch.rand(1)
+inputs_cluster = torch.rand(2)
+inputs_mask = torch.rand(1)
 
 # Number of epochs
 num_epochs = 10
@@ -30,12 +36,18 @@ for epoch in range(num_epochs):
     # Forward pass: Compute the model output for the input data
 
     # exit("Not Ready model training yet!!!")
-    outputs = model(train_data)
+    outputs = model(train_data,
+                    inputs_time,
+                    inputs_cluster,
+                    inputs_cond,
+                    inputs_mask)
 
     # Compute the loss
     loss = criterion(outputs, train_labels)
+    # This will be a custom loss function from PCD class
 
-    # Backward pass: Compute gradient of the loss with respect to model parameters
+    # Backward pass: Compute gradient of the 
+    # loss with respect to model parameters
     loss.backward()
 
     # Perform a single optimization step (parameter update)
@@ -45,5 +57,3 @@ for epoch in range(num_epochs):
 
 # After training, you can save the model if needed
 torch.save(model.state_dict(), 'gsgm_model.pth')
-
-
