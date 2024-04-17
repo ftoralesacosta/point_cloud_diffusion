@@ -4,7 +4,6 @@ import yaml
 import torch.nn as nn
 from deepsets import DeepSetsAtt
 import torch.nn.functional as F
-import keras.backend as K
 
 activation = nn.LeakyReLU(0.01)
 
@@ -16,7 +15,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         super(PCD, self).__init__()
 
         if config_file is None:
-            raise ValueError("\nNeed to specify config file!!\n")
+            raise ValueError("\nPCD Module L18: Config File must be specified\n")
 
         config = yaml.safe_load(open(config_file))
         self.config = config
@@ -37,38 +36,27 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.Set_alpha_beta_posterior()
 
         projection_dim = 16
-        self.projection = self.GaussianFourierProjection(scale=projection_dim)
+        # Random Fourier Features, to concat with input
+        self.projection = self.GaussianFourierProjection()
 
         self.loss_tracker = nn.MSELoss()
         # keras.metrics.Mean(name="loss")
 
-        # DEFINE THE INPUT LAYERS
-        # self.inputs_time = torch.tensor(1)
-        # self.inputs_cond = torch.tensor((self.num_cond))
-        # self.inputs_cluster = torch.tensor(self.num_cluster)
-        # self.inputs_cluster = torch.tensor((2,2))
-        # self.inputs_mask = torch.tensor((1, 1))
-        # ^^^^^^^
-        # In torch, the only the input and output dims need  to be
-        # Specified. This is num_feat, num_clust, and cond (mask).
-        # So we don't need these lines, but do need the size, 
-        # obtained from the config file, "input_size" below
 
         # linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
-        graph_LinearInput_size = self.num_embed + self.num_cluster + self.num_cond
-        cluster_LinearInput_size = self.num_embed + self.num_cond
+        graph_emb_size = self.num_embed + self.num_cluster + self.num_cond
+        cluster_emb_size = self.num_embed + self.num_cond
 
         self.activation = nn.LeakyReLU(0.01)
 
-        # DEFNE GRAPH MODEL
+        # DEFNE GRAPH Embedding
         self.graph_embedding1 = Embedding(projection_dim, self.num_embed)
-        print("\n\ngraph_embedding1 = ",self.graph_embedding1)
-        self.graph_linear1 = nn.Linear(graph_LinearInput_size, self.num_embed)  
+        self.graph_linear1 = nn.Linear(graph_emb_size, self.num_embed)
         self.graph_activation1 = self.activation
 
-        # DEFINE CLUSTER MODEL
+        # DEFINE CLUSTER Embedding
         self.cluster_embedding1 = Embedding(projection_dim, self.num_embed)
-        self.cluster_linear1 = nn.Linear(cluster_LinearInput_size, self.num_embed)
+        self.cluster_linear1 = nn.Linear(cluster_emb_size, self.num_embed)
         self.cluster_activation1 = self.activation
 
         self.ds_attention_layer = DeepSetsAtt(
@@ -148,7 +136,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
             torch.sqrt(alphas) / (1. - self.alphas_cumprod)
 
 
-    def GaussianFourierProjection(self, scale=30):
+    def GaussianFourierProjection(self):
         half_dim = self.num_embed // 4
         emb = torch.log(torch.tensor(10000.0)) / (half_dim - 1)
         freq = torch.exp(-emb * torch.arange(0, half_dim, dtype=torch.float32))
