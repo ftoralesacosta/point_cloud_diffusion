@@ -71,12 +71,13 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.cluster_linear1 = nn.Linear(cluster_LinearInput_size, self.num_embed)
         self.cluster_activation1 = self.activation
 
-        # self.ds_attention_layer = DeepSetsAtt(
-        #     num_feat=self.num_embed,
-        #     time_embedding=graph_conditional,
-        #     num_heads=1,
-        #     num_transformer=8,
-        #     projection_dim=64)
+        self.ds_attention_layer = DeepSetsAtt(
+            num_feat=self.num_embed,
+            time_embedding_dim=self.num_embed,
+            num_heads=1,
+            num_transformer=8,
+            projection_dim=64)
+            # time_embedding=graph_conditional,
 
     def forward(self,
                 training_data,
@@ -96,19 +97,19 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         graph_conditional = self.graph_linear1(graph_inputs)
         graph_conditional = self.activation(graph_conditional)
 
-
         # Cluster Forward Pass
         cluster_conditional = self.cluster_embedding1(inputs_time, self.projection)
-        cluster_inputs = torch.cat([cluster_conditional, inputs_cond],-1)
+        cluster_inputs = torch.cat([cluster_conditional, inputs_cond], -1)
         cluster_conditional = self.cluster_linear1(cluster_inputs)
         cluster_conditional = self.activation(cluster_conditional)
 
-        outputs = graph_conditional*cluster_conditional
-
         # Define DeepSets Attention Layers
-        # inputs, oututs = self.ds_attention_layer(inputs, 
-        #                                         inputs_mask)
+        inputs, outputs = self.ds_attention_layer(training_data,
+                                                 graph_conditional,
+                                                 inputs_mask)
 
+        # inputs, oututs = self.ds_attention_layer(inputs, graph_conditional,
+        #                                         inputs_mask)
 
         # print(f"inputs = {inputs}")  # TF: (None, None, 4)
         # print(f"outputs1 = {outputs}") # TF: (None, None, 4)
