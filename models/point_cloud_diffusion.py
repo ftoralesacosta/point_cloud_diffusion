@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import yaml
 import torch.nn as nn
-from deepsets import DeepSetsAtt
+from models.deepsets import DeepSetsAtt
 import torch.nn.functional as F
 
 activation = nn.LeakyReLU(0.01)
@@ -11,21 +11,18 @@ activation = nn.LeakyReLU(0.01)
 class PCD(nn.Module):  # Point Cloud Diffusion
     """Score based generative model"""
 
-    def __init__(self, name='SGM', npart=30, config_file=None, factor=1):
-        super(PCD, self).__init__()
+    def __init__(self, params, factor=1):
+        super().__init__()
 
-        if config_file is None:
-            raise ValueError("\nPCD Module L18: Config File must be specified\n")
-
-        config = yaml.safe_load(open(config_file))
-        self.config = config
 
         self.factor = factor
-        self.num_feat = self.config['NUM_FEAT']
-        self.num_cluster = self.config['NUM_CLUS']
-        self.num_cond = self.config['NUM_COND']
-        self.num_embed = self.config['EMBED']
-        self.num_steps = self.config['MAX_STEPS']//self.factor
+        self.num_feat = params.NUM_FEAT
+        self.num_cluster = params.NUM_CLUS
+        self.num_cond = params.NUM_COND
+        self.num_embed = params.EMBED
+        self.num_steps = params.MAX_STEPTS
+
+
         self.ema = 0.999
 
         # Diffusion TimeSteps
@@ -172,3 +169,8 @@ class Embedding(nn.Module):
     # num_params = count_parameters(self.model_part)
     # print("Number of parameters: {:,}".format(num_params))
     # Number of parameters: 314,372
+    def get_weights_function(self, params):
+        def weights_init(m):
+            # classname = m.__class__.__name__
+            nn.init.normal_(m.weight.data, 0.0, params['conv_scale'])
+        return weights_init
