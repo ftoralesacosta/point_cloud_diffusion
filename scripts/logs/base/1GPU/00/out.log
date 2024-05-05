@@ -1,0 +1,1455 @@
+2024-05-02 09:44:48,225 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 09:44:48,225 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 09:44:48,225 - root - INFO - data_path ../data/
+2024-05-02 09:44:48,225 - root - INFO - n_cell_feat 4
+2024-05-02 09:44:48,225 - root - INFO - n_clust_feat 2
+2024-05-02 09:44:48,226 - root - INFO - NUM_COND 1
+2024-05-02 09:44:48,226 - root - INFO - NSamples 1000000
+2024-05-02 09:44:48,226 - root - INFO - n_part_max 200
+2024-05-02 09:44:48,226 - root - INFO - distributed True
+2024-05-02 09:44:48,226 - root - INFO - global_batch_size 128
+2024-05-02 09:44:48,226 - root - INFO - base_batch_size 128
+2024-05-02 09:44:48,226 - root - INFO - BATCH 128
+2024-05-02 09:44:48,226 - root - INFO - LR 0.0001
+2024-05-02 09:44:48,226 - root - INFO - num_epochs 300
+2024-05-02 09:44:48,226 - root - INFO - EARLYSTOP 20
+2024-05-02 09:44:48,226 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 09:44:48,226 - root - INFO - EMBED 64
+2024-05-02 09:44:48,226 - root - INFO - MAX_STEPS 512
+2024-05-02 09:44:48,226 - root - INFO - MODEL_NAME GSGM
+2024-05-02 09:44:48,226 - root - INFO - distill False
+2024-05-02 09:44:48,226 - root - INFO - distill_factor 2
+2024-05-02 09:44:48,226 - root - INFO - amp_mode none
+2024-05-02 09:44:48,226 - root - INFO - expdir ./logs
+2024-05-02 09:44:48,226 - root - INFO - amp_enabled False
+2024-05-02 09:44:48,226 - root - INFO - amp_dtype torch.float32
+2024-05-02 09:44:48,227 - root - INFO - enable_apex False
+2024-05-02 09:44:48,227 - root - INFO - enable_jit False
+2024-05-02 09:44:48,227 - root - INFO - enable_benchy False
+2024-05-02 09:44:48,227 - root - INFO - ---------------------------------------------------
+2024-05-02 09:44:49,192 - root - INFO - rank 0, begin data loader init
+2024-05-02 09:53:28,865 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 09:53:28,865 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 09:53:28,866 - root - INFO - data_path ../data/
+2024-05-02 09:53:28,866 - root - INFO - n_cell_feat 4
+2024-05-02 09:53:28,866 - root - INFO - n_clust_feat 2
+2024-05-02 09:53:28,866 - root - INFO - NUM_COND 1
+2024-05-02 09:53:28,866 - root - INFO - NSamples 1000000
+2024-05-02 09:53:28,866 - root - INFO - n_part_max 200
+2024-05-02 09:53:28,866 - root - INFO - distributed True
+2024-05-02 09:53:28,866 - root - INFO - global_batch_size 128
+2024-05-02 09:53:28,866 - root - INFO - base_batch_size 128
+2024-05-02 09:53:28,866 - root - INFO - BATCH 128
+2024-05-02 09:53:28,866 - root - INFO - LR 0.0001
+2024-05-02 09:53:28,866 - root - INFO - num_epochs 300
+2024-05-02 09:53:28,866 - root - INFO - EARLYSTOP 20
+2024-05-02 09:53:28,866 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 09:53:28,866 - root - INFO - EMBED 64
+2024-05-02 09:53:28,866 - root - INFO - MAX_STEPS 512
+2024-05-02 09:53:28,866 - root - INFO - MODEL_NAME GSGM
+2024-05-02 09:53:28,866 - root - INFO - distill False
+2024-05-02 09:53:28,866 - root - INFO - distill_factor 2
+2024-05-02 09:53:28,867 - root - INFO - amp_mode none
+2024-05-02 09:53:28,867 - root - INFO - expdir ./logs
+2024-05-02 09:53:28,867 - root - INFO - amp_enabled False
+2024-05-02 09:53:28,867 - root - INFO - amp_dtype torch.float32
+2024-05-02 09:53:28,867 - root - INFO - enable_apex False
+2024-05-02 09:53:28,867 - root - INFO - enable_jit False
+2024-05-02 09:53:28,867 - root - INFO - enable_benchy False
+2024-05-02 09:53:28,867 - root - INFO - ---------------------------------------------------
+2024-05-02 09:53:29,829 - root - INFO - rank 0, begin data loader init
+2024-05-02 09:55:13,544 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 09:55:13,545 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 09:55:13,545 - root - INFO - data_path ../data/
+2024-05-02 09:55:13,545 - root - INFO - n_cell_feat 4
+2024-05-02 09:55:13,545 - root - INFO - n_clust_feat 2
+2024-05-02 09:55:13,545 - root - INFO - NUM_COND 1
+2024-05-02 09:55:13,545 - root - INFO - NSamples 1000000
+2024-05-02 09:55:13,545 - root - INFO - n_part_max 200
+2024-05-02 09:55:13,545 - root - INFO - distributed True
+2024-05-02 09:55:13,545 - root - INFO - global_batch_size 128
+2024-05-02 09:55:13,545 - root - INFO - base_batch_size 128
+2024-05-02 09:55:13,545 - root - INFO - BATCH 128
+2024-05-02 09:55:13,545 - root - INFO - LR 0.0001
+2024-05-02 09:55:13,545 - root - INFO - num_epochs 300
+2024-05-02 09:55:13,545 - root - INFO - EARLYSTOP 20
+2024-05-02 09:55:13,545 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 09:55:13,545 - root - INFO - EMBED 64
+2024-05-02 09:55:13,545 - root - INFO - MAX_STEPS 512
+2024-05-02 09:55:13,545 - root - INFO - MODEL_NAME GSGM
+2024-05-02 09:55:13,546 - root - INFO - distill False
+2024-05-02 09:55:13,546 - root - INFO - distill_factor 2
+2024-05-02 09:55:13,546 - root - INFO - amp_mode none
+2024-05-02 09:55:13,546 - root - INFO - expdir ./logs
+2024-05-02 09:55:13,546 - root - INFO - amp_enabled False
+2024-05-02 09:55:13,546 - root - INFO - amp_dtype torch.float32
+2024-05-02 09:55:13,546 - root - INFO - enable_apex False
+2024-05-02 09:55:13,546 - root - INFO - enable_jit False
+2024-05-02 09:55:13,546 - root - INFO - enable_benchy False
+2024-05-02 09:55:13,546 - root - INFO - ---------------------------------------------------
+2024-05-02 09:55:14,575 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:03:36,063 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:03:36,063 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:03:36,063 - root - INFO - data_path ../data/
+2024-05-02 10:03:36,063 - root - INFO - n_cell_feat 4
+2024-05-02 10:03:36,063 - root - INFO - n_clust_feat 2
+2024-05-02 10:03:36,063 - root - INFO - NUM_COND 1
+2024-05-02 10:03:36,063 - root - INFO - NSamples 1000000
+2024-05-02 10:03:36,063 - root - INFO - n_part_max 200
+2024-05-02 10:03:36,063 - root - INFO - distributed True
+2024-05-02 10:03:36,063 - root - INFO - global_batch_size 128
+2024-05-02 10:03:36,063 - root - INFO - base_batch_size 128
+2024-05-02 10:03:36,063 - root - INFO - BATCH 128
+2024-05-02 10:03:36,063 - root - INFO - LR 0.0001
+2024-05-02 10:03:36,063 - root - INFO - num_epochs 300
+2024-05-02 10:03:36,063 - root - INFO - EARLYSTOP 20
+2024-05-02 10:03:36,064 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:03:36,064 - root - INFO - EMBED 64
+2024-05-02 10:03:36,064 - root - INFO - MAX_STEPS 512
+2024-05-02 10:03:36,064 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:03:36,064 - root - INFO - distill False
+2024-05-02 10:03:36,064 - root - INFO - distill_factor 2
+2024-05-02 10:03:36,064 - root - INFO - amp_mode none
+2024-05-02 10:03:36,064 - root - INFO - expdir ./logs
+2024-05-02 10:03:36,064 - root - INFO - amp_enabled False
+2024-05-02 10:03:36,064 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:03:36,064 - root - INFO - enable_apex False
+2024-05-02 10:03:36,064 - root - INFO - enable_jit False
+2024-05-02 10:03:36,064 - root - INFO - enable_benchy False
+2024-05-02 10:03:36,064 - root - INFO - ---------------------------------------------------
+2024-05-02 10:03:37,143 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:12:42,419 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:12:42,419 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:12:42,419 - root - INFO - data_path ../data/
+2024-05-02 10:12:42,419 - root - INFO - n_cell_feat 4
+2024-05-02 10:12:42,419 - root - INFO - n_clust_feat 2
+2024-05-02 10:12:42,419 - root - INFO - NUM_COND 1
+2024-05-02 10:12:42,419 - root - INFO - NSamples 1000000
+2024-05-02 10:12:42,419 - root - INFO - n_part_max 200
+2024-05-02 10:12:42,419 - root - INFO - distributed True
+2024-05-02 10:12:42,419 - root - INFO - global_batch_size 128
+2024-05-02 10:12:42,419 - root - INFO - base_batch_size 128
+2024-05-02 10:12:42,419 - root - INFO - BATCH 128
+2024-05-02 10:12:42,419 - root - INFO - LR 0.0001
+2024-05-02 10:12:42,420 - root - INFO - num_epochs 300
+2024-05-02 10:12:42,420 - root - INFO - EARLYSTOP 20
+2024-05-02 10:12:42,420 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:12:42,420 - root - INFO - EMBED 64
+2024-05-02 10:12:42,420 - root - INFO - MAX_STEPS 512
+2024-05-02 10:12:42,420 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:12:42,420 - root - INFO - distill False
+2024-05-02 10:12:42,420 - root - INFO - distill_factor 2
+2024-05-02 10:12:42,420 - root - INFO - amp_mode none
+2024-05-02 10:12:42,420 - root - INFO - expdir ./logs
+2024-05-02 10:12:42,420 - root - INFO - amp_enabled False
+2024-05-02 10:12:42,420 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:12:42,420 - root - INFO - enable_apex False
+2024-05-02 10:12:42,420 - root - INFO - enable_jit False
+2024-05-02 10:12:42,420 - root - INFO - enable_benchy False
+2024-05-02 10:12:42,420 - root - INFO - ---------------------------------------------------
+2024-05-02 10:12:43,464 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:14:12,677 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:14:12,677 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:14:12,677 - root - INFO - data_path ../data/
+2024-05-02 10:14:12,677 - root - INFO - n_cell_feat 4
+2024-05-02 10:14:12,677 - root - INFO - n_clust_feat 2
+2024-05-02 10:14:12,677 - root - INFO - NUM_COND 1
+2024-05-02 10:14:12,677 - root - INFO - NSamples 1000000
+2024-05-02 10:14:12,678 - root - INFO - n_part 200
+2024-05-02 10:14:12,678 - root - INFO - distributed True
+2024-05-02 10:14:12,678 - root - INFO - global_batch_size 128
+2024-05-02 10:14:12,678 - root - INFO - base_batch_size 128
+2024-05-02 10:14:12,678 - root - INFO - BATCH 128
+2024-05-02 10:14:12,678 - root - INFO - LR 0.0001
+2024-05-02 10:14:12,678 - root - INFO - num_epochs 300
+2024-05-02 10:14:12,678 - root - INFO - EARLYSTOP 20
+2024-05-02 10:14:12,678 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:14:12,678 - root - INFO - EMBED 64
+2024-05-02 10:14:12,678 - root - INFO - MAX_STEPS 512
+2024-05-02 10:14:12,678 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:14:12,678 - root - INFO - distill False
+2024-05-02 10:14:12,678 - root - INFO - distill_factor 2
+2024-05-02 10:14:12,678 - root - INFO - amp_mode none
+2024-05-02 10:14:12,678 - root - INFO - expdir ./logs
+2024-05-02 10:14:12,678 - root - INFO - amp_enabled False
+2024-05-02 10:14:12,678 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:14:12,678 - root - INFO - enable_apex False
+2024-05-02 10:14:12,678 - root - INFO - enable_jit False
+2024-05-02 10:14:12,679 - root - INFO - enable_benchy False
+2024-05-02 10:14:12,679 - root - INFO - ---------------------------------------------------
+2024-05-02 10:14:13,593 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:16:13,798 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:16:13,798 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:16:13,798 - root - INFO - data_path ../data/
+2024-05-02 10:16:13,798 - root - INFO - n_cell_feat 4
+2024-05-02 10:16:13,798 - root - INFO - n_clust_feat 2
+2024-05-02 10:16:13,798 - root - INFO - NUM_COND 1
+2024-05-02 10:16:13,798 - root - INFO - NSamples 1000000
+2024-05-02 10:16:13,798 - root - INFO - npart 200
+2024-05-02 10:16:13,799 - root - INFO - distributed True
+2024-05-02 10:16:13,799 - root - INFO - global_batch_size 128
+2024-05-02 10:16:13,799 - root - INFO - base_batch_size 128
+2024-05-02 10:16:13,799 - root - INFO - BATCH 128
+2024-05-02 10:16:13,799 - root - INFO - LR 0.0001
+2024-05-02 10:16:13,799 - root - INFO - num_epochs 300
+2024-05-02 10:16:13,799 - root - INFO - EARLYSTOP 20
+2024-05-02 10:16:13,799 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:16:13,799 - root - INFO - EMBED 64
+2024-05-02 10:16:13,799 - root - INFO - MAX_STEPS 512
+2024-05-02 10:16:13,799 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:16:13,799 - root - INFO - distill False
+2024-05-02 10:16:13,799 - root - INFO - distill_factor 2
+2024-05-02 10:16:13,799 - root - INFO - amp_mode none
+2024-05-02 10:16:13,799 - root - INFO - expdir ./logs
+2024-05-02 10:16:13,799 - root - INFO - amp_enabled False
+2024-05-02 10:16:13,799 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:16:13,799 - root - INFO - enable_apex False
+2024-05-02 10:16:13,799 - root - INFO - enable_jit False
+2024-05-02 10:16:13,799 - root - INFO - enable_benchy False
+2024-05-02 10:16:13,800 - root - INFO - ---------------------------------------------------
+2024-05-02 10:16:15,055 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:23:13,707 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:23:13,707 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:23:13,707 - root - INFO - data_path ../data/
+2024-05-02 10:23:13,707 - root - INFO - n_cell_feat 4
+2024-05-02 10:23:13,707 - root - INFO - n_clust_feat 2
+2024-05-02 10:23:13,707 - root - INFO - NUM_COND 1
+2024-05-02 10:23:13,707 - root - INFO - NSamples 1000000
+2024-05-02 10:23:13,707 - root - INFO - npart 200
+2024-05-02 10:23:13,707 - root - INFO - train_fraction 0.7
+2024-05-02 10:23:13,707 - root - INFO - val_fraction 0.2
+2024-05-02 10:23:13,707 - root - INFO - test_fraction 0.1
+2024-05-02 10:23:13,707 - root - INFO - distributed True
+2024-05-02 10:23:13,707 - root - INFO - global_batch_size 128
+2024-05-02 10:23:13,707 - root - INFO - base_batch_size 128
+2024-05-02 10:23:13,707 - root - INFO - BATCH 128
+2024-05-02 10:23:13,708 - root - INFO - LR 0.0001
+2024-05-02 10:23:13,708 - root - INFO - num_epochs 300
+2024-05-02 10:23:13,708 - root - INFO - EARLYSTOP 20
+2024-05-02 10:23:13,708 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:23:13,708 - root - INFO - EMBED 64
+2024-05-02 10:23:13,708 - root - INFO - MAX_STEPS 512
+2024-05-02 10:23:13,708 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:23:13,708 - root - INFO - distill False
+2024-05-02 10:23:13,708 - root - INFO - distill_factor 2
+2024-05-02 10:23:13,708 - root - INFO - amp_mode none
+2024-05-02 10:23:13,708 - root - INFO - expdir ./logs
+2024-05-02 10:23:13,708 - root - INFO - amp_enabled False
+2024-05-02 10:23:13,708 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:23:13,708 - root - INFO - enable_apex False
+2024-05-02 10:23:13,708 - root - INFO - enable_jit False
+2024-05-02 10:23:13,708 - root - INFO - enable_benchy False
+2024-05-02 10:23:13,708 - root - INFO - ---------------------------------------------------
+2024-05-02 10:23:14,736 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:24:13,744 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:24:13,744 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:24:13,744 - root - INFO - data_path ../data/
+2024-05-02 10:24:13,744 - root - INFO - n_cell_feat 4
+2024-05-02 10:24:13,744 - root - INFO - n_clust_feat 2
+2024-05-02 10:24:13,744 - root - INFO - NUM_COND 1
+2024-05-02 10:24:13,744 - root - INFO - NSamples 1000000
+2024-05-02 10:24:13,744 - root - INFO - npart 200
+2024-05-02 10:24:13,745 - root - INFO - train_fraction 0.7
+2024-05-02 10:24:13,745 - root - INFO - val_fraction 0.2
+2024-05-02 10:24:13,745 - root - INFO - test_fraction 0.1
+2024-05-02 10:24:13,745 - root - INFO - distributed True
+2024-05-02 10:24:13,745 - root - INFO - global_batch_size 128
+2024-05-02 10:24:13,745 - root - INFO - base_batch_size 128
+2024-05-02 10:24:13,745 - root - INFO - BATCH 128
+2024-05-02 10:24:13,745 - root - INFO - LR 0.0001
+2024-05-02 10:24:13,745 - root - INFO - num_epochs 300
+2024-05-02 10:24:13,745 - root - INFO - EARLYSTOP 20
+2024-05-02 10:24:13,745 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:24:13,745 - root - INFO - EMBED 64
+2024-05-02 10:24:13,745 - root - INFO - MAX_STEPS 512
+2024-05-02 10:24:13,745 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:24:13,745 - root - INFO - distill False
+2024-05-02 10:24:13,745 - root - INFO - distill_factor 2
+2024-05-02 10:24:13,745 - root - INFO - amp_mode none
+2024-05-02 10:24:13,745 - root - INFO - expdir ./logs
+2024-05-02 10:24:13,745 - root - INFO - amp_enabled False
+2024-05-02 10:24:13,746 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:24:13,746 - root - INFO - enable_apex False
+2024-05-02 10:24:13,746 - root - INFO - enable_jit False
+2024-05-02 10:24:13,746 - root - INFO - enable_benchy False
+2024-05-02 10:24:13,746 - root - INFO - ---------------------------------------------------
+2024-05-02 10:24:14,799 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:28:32,449 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:28:32,450 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:28:32,450 - root - INFO - data_path ../data/
+2024-05-02 10:28:32,450 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:28:32,450 - root - INFO - n_cell_feat 4
+2024-05-02 10:28:32,450 - root - INFO - n_clust_feat 2
+2024-05-02 10:28:32,450 - root - INFO - NUM_COND 1
+2024-05-02 10:28:32,450 - root - INFO - NSamples 1000000
+2024-05-02 10:28:32,450 - root - INFO - npart 200
+2024-05-02 10:28:32,450 - root - INFO - train_fraction 0.7
+2024-05-02 10:28:32,450 - root - INFO - val_fraction 0.2
+2024-05-02 10:28:32,450 - root - INFO - test_fraction 0.1
+2024-05-02 10:28:32,450 - root - INFO - distributed True
+2024-05-02 10:28:32,450 - root - INFO - global_batch_size 128
+2024-05-02 10:28:32,450 - root - INFO - base_batch_size 128
+2024-05-02 10:28:32,450 - root - INFO - BATCH 128
+2024-05-02 10:28:32,450 - root - INFO - LR 0.0001
+2024-05-02 10:28:32,450 - root - INFO - num_epochs 300
+2024-05-02 10:28:32,450 - root - INFO - EARLYSTOP 20
+2024-05-02 10:28:32,451 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:28:32,451 - root - INFO - EMBED 64
+2024-05-02 10:28:32,451 - root - INFO - MAX_STEPS 512
+2024-05-02 10:28:32,451 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:28:32,451 - root - INFO - distill False
+2024-05-02 10:28:32,451 - root - INFO - distill_factor 2
+2024-05-02 10:28:32,451 - root - INFO - amp_mode none
+2024-05-02 10:28:32,451 - root - INFO - expdir ./logs
+2024-05-02 10:28:32,451 - root - INFO - amp_enabled False
+2024-05-02 10:28:32,451 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:28:32,451 - root - INFO - enable_apex False
+2024-05-02 10:28:32,451 - root - INFO - enable_jit False
+2024-05-02 10:28:32,451 - root - INFO - enable_benchy False
+2024-05-02 10:28:32,451 - root - INFO - ---------------------------------------------------
+2024-05-02 10:28:33,439 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:28:58,742 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:28:58,742 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:28:58,742 - root - INFO - data_path ../data/
+2024-05-02 10:28:58,742 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:28:58,742 - root - INFO - n_cell_feat 4
+2024-05-02 10:28:58,742 - root - INFO - n_clust_feat 2
+2024-05-02 10:28:58,742 - root - INFO - NUM_COND 1
+2024-05-02 10:28:58,742 - root - INFO - NSamples 1000000
+2024-05-02 10:28:58,743 - root - INFO - npart 200
+2024-05-02 10:28:58,743 - root - INFO - train_fraction 0.7
+2024-05-02 10:28:58,743 - root - INFO - val_fraction 0.2
+2024-05-02 10:28:58,743 - root - INFO - test_fraction 0.1
+2024-05-02 10:28:58,743 - root - INFO - distributed True
+2024-05-02 10:28:58,743 - root - INFO - global_batch_size 128
+2024-05-02 10:28:58,743 - root - INFO - base_batch_size 128
+2024-05-02 10:28:58,743 - root - INFO - BATCH 128
+2024-05-02 10:28:58,743 - root - INFO - LR 0.0001
+2024-05-02 10:28:58,743 - root - INFO - num_epochs 300
+2024-05-02 10:28:58,743 - root - INFO - EARLYSTOP 20
+2024-05-02 10:28:58,743 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:28:58,743 - root - INFO - EMBED 64
+2024-05-02 10:28:58,743 - root - INFO - MAX_STEPS 512
+2024-05-02 10:28:58,743 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:28:58,743 - root - INFO - distill False
+2024-05-02 10:28:58,743 - root - INFO - distill_factor 2
+2024-05-02 10:28:58,743 - root - INFO - amp_mode none
+2024-05-02 10:28:58,744 - root - INFO - expdir ./logs
+2024-05-02 10:28:58,744 - root - INFO - amp_enabled False
+2024-05-02 10:28:58,744 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:28:58,744 - root - INFO - enable_apex False
+2024-05-02 10:28:58,744 - root - INFO - enable_jit False
+2024-05-02 10:28:58,744 - root - INFO - enable_benchy False
+2024-05-02 10:28:58,744 - root - INFO - ---------------------------------------------------
+2024-05-02 10:28:59,727 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:29:53,211 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:29:53,212 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:29:53,212 - root - INFO - data_path ../data/
+2024-05-02 10:29:53,212 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:29:53,212 - root - INFO - n_cell_feat 4
+2024-05-02 10:29:53,212 - root - INFO - n_clust_feat 2
+2024-05-02 10:29:53,212 - root - INFO - NUM_COND 1
+2024-05-02 10:29:53,212 - root - INFO - NSamples 1000000
+2024-05-02 10:29:53,212 - root - INFO - npart 200
+2024-05-02 10:29:53,212 - root - INFO - train_fraction 0.7
+2024-05-02 10:29:53,212 - root - INFO - val_fraction 0.2
+2024-05-02 10:29:53,212 - root - INFO - test_fraction 0.1
+2024-05-02 10:29:53,212 - root - INFO - distributed True
+2024-05-02 10:29:53,212 - root - INFO - global_batch_size 128
+2024-05-02 10:29:53,212 - root - INFO - base_batch_size 128
+2024-05-02 10:29:53,212 - root - INFO - BATCH 128
+2024-05-02 10:29:53,212 - root - INFO - LR 0.0001
+2024-05-02 10:29:53,212 - root - INFO - num_epochs 300
+2024-05-02 10:29:53,212 - root - INFO - EARLYSTOP 20
+2024-05-02 10:29:53,212 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:29:53,213 - root - INFO - EMBED 64
+2024-05-02 10:29:53,213 - root - INFO - MAX_STEPS 512
+2024-05-02 10:29:53,213 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:29:53,213 - root - INFO - distill False
+2024-05-02 10:29:53,213 - root - INFO - distill_factor 2
+2024-05-02 10:29:53,213 - root - INFO - amp_mode none
+2024-05-02 10:29:53,213 - root - INFO - expdir ./logs
+2024-05-02 10:29:53,213 - root - INFO - amp_enabled False
+2024-05-02 10:29:53,213 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:29:53,213 - root - INFO - enable_apex False
+2024-05-02 10:29:53,213 - root - INFO - enable_jit False
+2024-05-02 10:29:53,213 - root - INFO - enable_benchy False
+2024-05-02 10:29:53,213 - root - INFO - ---------------------------------------------------
+2024-05-02 10:29:54,188 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:31:52,520 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:31:52,521 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:31:52,521 - root - INFO - data_path ../data/
+2024-05-02 10:31:52,521 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:31:52,521 - root - INFO - n_cell_feat 4
+2024-05-02 10:31:52,521 - root - INFO - n_clust_feat 2
+2024-05-02 10:31:52,521 - root - INFO - NUM_COND 1
+2024-05-02 10:31:52,521 - root - INFO - NSamples 1000000
+2024-05-02 10:31:52,521 - root - INFO - npart 200
+2024-05-02 10:31:52,521 - root - INFO - train_fraction 0.7
+2024-05-02 10:31:52,521 - root - INFO - val_fraction 0.2
+2024-05-02 10:31:52,521 - root - INFO - test_fraction 0.1
+2024-05-02 10:31:52,521 - root - INFO - distributed True
+2024-05-02 10:31:52,521 - root - INFO - global_batch_size 128
+2024-05-02 10:31:52,521 - root - INFO - base_batch_size 128
+2024-05-02 10:31:52,521 - root - INFO - BATCH 128
+2024-05-02 10:31:52,521 - root - INFO - LR 0.0001
+2024-05-02 10:31:52,521 - root - INFO - num_epochs 300
+2024-05-02 10:31:52,521 - root - INFO - EARLYSTOP 20
+2024-05-02 10:31:52,522 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:31:52,522 - root - INFO - EMBED 64
+2024-05-02 10:31:52,522 - root - INFO - MAX_STEPS 512
+2024-05-02 10:31:52,522 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:31:52,522 - root - INFO - distill False
+2024-05-02 10:31:52,522 - root - INFO - distill_factor 2
+2024-05-02 10:31:52,522 - root - INFO - amp_mode none
+2024-05-02 10:31:52,522 - root - INFO - expdir ./logs
+2024-05-02 10:31:52,522 - root - INFO - amp_enabled False
+2024-05-02 10:31:52,522 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:31:52,522 - root - INFO - enable_apex False
+2024-05-02 10:31:52,522 - root - INFO - enable_jit False
+2024-05-02 10:31:52,522 - root - INFO - enable_benchy False
+2024-05-02 10:31:52,522 - root - INFO - ---------------------------------------------------
+2024-05-02 10:31:53,441 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:32:29,825 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:32:29,825 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:32:29,825 - root - INFO - data_path ../data/
+2024-05-02 10:32:29,826 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:32:29,826 - root - INFO - n_cell_feat 4
+2024-05-02 10:32:29,826 - root - INFO - n_clust_feat 2
+2024-05-02 10:32:29,826 - root - INFO - NUM_COND 1
+2024-05-02 10:32:29,826 - root - INFO - NSamples 1000000
+2024-05-02 10:32:29,826 - root - INFO - npart 200
+2024-05-02 10:32:29,826 - root - INFO - train_fraction 0.7
+2024-05-02 10:32:29,826 - root - INFO - val_fraction 0.2
+2024-05-02 10:32:29,826 - root - INFO - test_fraction 0.1
+2024-05-02 10:32:29,826 - root - INFO - distributed True
+2024-05-02 10:32:29,826 - root - INFO - global_batch_size 128
+2024-05-02 10:32:29,826 - root - INFO - base_batch_size 128
+2024-05-02 10:32:29,826 - root - INFO - BATCH 128
+2024-05-02 10:32:29,826 - root - INFO - LR 0.0001
+2024-05-02 10:32:29,826 - root - INFO - num_epochs 300
+2024-05-02 10:32:29,826 - root - INFO - EARLYSTOP 20
+2024-05-02 10:32:29,826 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:32:29,826 - root - INFO - EMBED 64
+2024-05-02 10:32:29,826 - root - INFO - MAX_STEPS 512
+2024-05-02 10:32:29,826 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:32:29,826 - root - INFO - distill False
+2024-05-02 10:32:29,827 - root - INFO - distill_factor 2
+2024-05-02 10:32:29,827 - root - INFO - amp_mode none
+2024-05-02 10:32:29,827 - root - INFO - expdir ./logs
+2024-05-02 10:32:29,827 - root - INFO - amp_enabled False
+2024-05-02 10:32:29,827 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:32:29,827 - root - INFO - enable_apex False
+2024-05-02 10:32:29,827 - root - INFO - enable_jit False
+2024-05-02 10:32:29,827 - root - INFO - enable_benchy False
+2024-05-02 10:32:29,827 - root - INFO - ---------------------------------------------------
+2024-05-02 10:32:30,797 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:33:12,102 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:33:12,102 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:33:12,102 - root - INFO - data_path ../data/
+2024-05-02 10:33:12,102 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:33:12,102 - root - INFO - n_cell_feat 4
+2024-05-02 10:33:12,102 - root - INFO - n_clust_feat 2
+2024-05-02 10:33:12,103 - root - INFO - NUM_COND 1
+2024-05-02 10:33:12,103 - root - INFO - NSamples 1000000
+2024-05-02 10:33:12,103 - root - INFO - npart 200
+2024-05-02 10:33:12,103 - root - INFO - train_fraction 0.7
+2024-05-02 10:33:12,103 - root - INFO - val_fraction 0.2
+2024-05-02 10:33:12,103 - root - INFO - test_fraction 0.1
+2024-05-02 10:33:12,103 - root - INFO - distributed True
+2024-05-02 10:33:12,103 - root - INFO - global_batch_size 128
+2024-05-02 10:33:12,103 - root - INFO - base_batch_size 128
+2024-05-02 10:33:12,103 - root - INFO - BATCH 128
+2024-05-02 10:33:12,103 - root - INFO - LR 0.0001
+2024-05-02 10:33:12,103 - root - INFO - num_epochs 300
+2024-05-02 10:33:12,103 - root - INFO - EARLYSTOP 20
+2024-05-02 10:33:12,103 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:33:12,103 - root - INFO - EMBED 64
+2024-05-02 10:33:12,103 - root - INFO - MAX_STEPS 512
+2024-05-02 10:33:12,103 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:33:12,103 - root - INFO - distill False
+2024-05-02 10:33:12,103 - root - INFO - distill_factor 2
+2024-05-02 10:33:12,104 - root - INFO - amp_mode none
+2024-05-02 10:33:12,104 - root - INFO - expdir ./logs
+2024-05-02 10:33:12,104 - root - INFO - amp_enabled False
+2024-05-02 10:33:12,104 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:33:12,104 - root - INFO - enable_apex False
+2024-05-02 10:33:12,104 - root - INFO - enable_jit False
+2024-05-02 10:33:12,104 - root - INFO - enable_benchy False
+2024-05-02 10:33:12,104 - root - INFO - ---------------------------------------------------
+2024-05-02 10:33:13,069 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:34:50,207 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:34:50,207 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:34:50,207 - root - INFO - data_path ../data/
+2024-05-02 10:34:50,207 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:34:50,207 - root - INFO - n_cell_feat 4
+2024-05-02 10:34:50,207 - root - INFO - n_clust_feat 2
+2024-05-02 10:34:50,207 - root - INFO - NUM_COND 1
+2024-05-02 10:34:50,207 - root - INFO - NSamples 1000000
+2024-05-02 10:34:50,208 - root - INFO - npart 200
+2024-05-02 10:34:50,208 - root - INFO - train_fraction 0.7
+2024-05-02 10:34:50,208 - root - INFO - val_fraction 0.2
+2024-05-02 10:34:50,208 - root - INFO - test_fraction 0.1
+2024-05-02 10:34:50,208 - root - INFO - distributed True
+2024-05-02 10:34:50,208 - root - INFO - global_batch_size 128
+2024-05-02 10:34:50,208 - root - INFO - base_batch_size 128
+2024-05-02 10:34:50,208 - root - INFO - BATCH 128
+2024-05-02 10:34:50,208 - root - INFO - LR 0.0001
+2024-05-02 10:34:50,208 - root - INFO - num_epochs 300
+2024-05-02 10:34:50,208 - root - INFO - EARLYSTOP 20
+2024-05-02 10:34:50,208 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:34:50,208 - root - INFO - EMBED 64
+2024-05-02 10:34:50,208 - root - INFO - MAX_STEPS 512
+2024-05-02 10:34:50,208 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:34:50,208 - root - INFO - distill False
+2024-05-02 10:34:50,208 - root - INFO - distill_factor 2
+2024-05-02 10:34:50,208 - root - INFO - amp_mode none
+2024-05-02 10:34:50,208 - root - INFO - expdir ./logs
+2024-05-02 10:34:50,208 - root - INFO - amp_enabled False
+2024-05-02 10:34:50,209 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:34:50,209 - root - INFO - enable_apex False
+2024-05-02 10:34:50,209 - root - INFO - enable_jit False
+2024-05-02 10:34:50,209 - root - INFO - enable_benchy False
+2024-05-02 10:34:50,209 - root - INFO - ---------------------------------------------------
+2024-05-02 10:34:51,140 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:36:46,602 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:36:46,602 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:36:46,602 - root - INFO - data_path ../data/
+2024-05-02 10:36:46,602 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:36:46,602 - root - INFO - n_cell_feat 4
+2024-05-02 10:36:46,602 - root - INFO - n_clust_feat 2
+2024-05-02 10:36:46,602 - root - INFO - NUM_COND 1
+2024-05-02 10:36:46,602 - root - INFO - NSamples 1000000
+2024-05-02 10:36:46,603 - root - INFO - npart 200
+2024-05-02 10:36:46,603 - root - INFO - train_fraction 0.7
+2024-05-02 10:36:46,603 - root - INFO - val_fraction 0.2
+2024-05-02 10:36:46,603 - root - INFO - test_fraction 0.1
+2024-05-02 10:36:46,603 - root - INFO - distributed True
+2024-05-02 10:36:46,603 - root - INFO - global_batch_size 128
+2024-05-02 10:36:46,603 - root - INFO - base_batch_size 128
+2024-05-02 10:36:46,603 - root - INFO - BATCH 128
+2024-05-02 10:36:46,603 - root - INFO - LR 0.0001
+2024-05-02 10:36:46,603 - root - INFO - num_epochs 300
+2024-05-02 10:36:46,603 - root - INFO - EARLYSTOP 20
+2024-05-02 10:36:46,603 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:36:46,603 - root - INFO - EMBED 64
+2024-05-02 10:36:46,603 - root - INFO - MAX_STEPS 512
+2024-05-02 10:36:46,603 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:36:46,603 - root - INFO - distill False
+2024-05-02 10:36:46,604 - root - INFO - distill_factor 2
+2024-05-02 10:36:46,604 - root - INFO - amp_mode none
+2024-05-02 10:36:46,604 - root - INFO - expdir ./logs
+2024-05-02 10:36:46,604 - root - INFO - amp_enabled False
+2024-05-02 10:36:46,604 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:36:46,604 - root - INFO - enable_apex False
+2024-05-02 10:36:46,604 - root - INFO - enable_jit False
+2024-05-02 10:36:46,604 - root - INFO - enable_benchy False
+2024-05-02 10:36:46,604 - root - INFO - ---------------------------------------------------
+2024-05-02 10:36:47,571 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:37:22,612 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:37:22,613 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:37:22,613 - root - INFO - data_path ../data/
+2024-05-02 10:37:22,613 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:37:22,613 - root - INFO - n_cell_feat 4
+2024-05-02 10:37:22,613 - root - INFO - n_clust_feat 2
+2024-05-02 10:37:22,613 - root - INFO - NUM_COND 1
+2024-05-02 10:37:22,613 - root - INFO - NSamples 1000000
+2024-05-02 10:37:22,613 - root - INFO - npart 200
+2024-05-02 10:37:22,613 - root - INFO - train_fraction 0.7
+2024-05-02 10:37:22,613 - root - INFO - val_fraction 0.2
+2024-05-02 10:37:22,613 - root - INFO - test_fraction 0.1
+2024-05-02 10:37:22,613 - root - INFO - distributed True
+2024-05-02 10:37:22,613 - root - INFO - global_batch_size 128
+2024-05-02 10:37:22,613 - root - INFO - base_batch_size 128
+2024-05-02 10:37:22,613 - root - INFO - BATCH 128
+2024-05-02 10:37:22,613 - root - INFO - LR 0.0001
+2024-05-02 10:37:22,613 - root - INFO - num_epochs 300
+2024-05-02 10:37:22,613 - root - INFO - EARLYSTOP 20
+2024-05-02 10:37:22,613 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:37:22,614 - root - INFO - EMBED 64
+2024-05-02 10:37:22,614 - root - INFO - MAX_STEPS 512
+2024-05-02 10:37:22,614 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:37:22,614 - root - INFO - distill False
+2024-05-02 10:37:22,614 - root - INFO - distill_factor 2
+2024-05-02 10:37:22,614 - root - INFO - amp_mode none
+2024-05-02 10:37:22,614 - root - INFO - expdir ./logs
+2024-05-02 10:37:22,614 - root - INFO - amp_enabled False
+2024-05-02 10:37:22,614 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:37:22,614 - root - INFO - enable_apex False
+2024-05-02 10:37:22,614 - root - INFO - enable_jit False
+2024-05-02 10:37:22,614 - root - INFO - enable_benchy False
+2024-05-02 10:37:22,614 - root - INFO - ---------------------------------------------------
+2024-05-02 10:37:23,588 - root - INFO - rank 0, begin data loader init
+2024-05-02 10:41:16,391 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 10:41:16,391 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 10:41:16,391 - root - INFO - data_path ../data/
+2024-05-02 10:41:16,391 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 10:41:16,391 - root - INFO - n_cell_feat 4
+2024-05-02 10:41:16,391 - root - INFO - n_clust_feat 2
+2024-05-02 10:41:16,391 - root - INFO - NUM_COND 1
+2024-05-02 10:41:16,391 - root - INFO - NSamples 1000000
+2024-05-02 10:41:16,391 - root - INFO - npart 200
+2024-05-02 10:41:16,391 - root - INFO - train_fraction 0.7
+2024-05-02 10:41:16,391 - root - INFO - val_fraction 0.2
+2024-05-02 10:41:16,392 - root - INFO - test_fraction 0.1
+2024-05-02 10:41:16,392 - root - INFO - distributed True
+2024-05-02 10:41:16,392 - root - INFO - global_batch_size 128
+2024-05-02 10:41:16,392 - root - INFO - base_batch_size 128
+2024-05-02 10:41:16,392 - root - INFO - BATCH 128
+2024-05-02 10:41:16,392 - root - INFO - LR 0.0001
+2024-05-02 10:41:16,392 - root - INFO - num_epochs 300
+2024-05-02 10:41:16,392 - root - INFO - EARLYSTOP 20
+2024-05-02 10:41:16,392 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 10:41:16,392 - root - INFO - EMBED 64
+2024-05-02 10:41:16,392 - root - INFO - MAX_STEPS 512
+2024-05-02 10:41:16,392 - root - INFO - MODEL_NAME GSGM
+2024-05-02 10:41:16,392 - root - INFO - distill False
+2024-05-02 10:41:16,392 - root - INFO - distill_factor 2
+2024-05-02 10:41:16,392 - root - INFO - amp_mode none
+2024-05-02 10:41:16,392 - root - INFO - expdir ./logs
+2024-05-02 10:41:16,392 - root - INFO - amp_enabled False
+2024-05-02 10:41:16,392 - root - INFO - amp_dtype torch.float32
+2024-05-02 10:41:16,392 - root - INFO - enable_apex False
+2024-05-02 10:41:16,393 - root - INFO - enable_jit False
+2024-05-02 10:41:16,393 - root - INFO - enable_benchy False
+2024-05-02 10:41:16,393 - root - INFO - ---------------------------------------------------
+2024-05-02 10:41:17,407 - root - INFO - rank 0, begin data loader init
+2024-05-02 18:51:07,771 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 18:51:07,772 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 18:51:07,772 - root - INFO - data_path ../data/
+2024-05-02 18:51:07,772 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 18:51:07,772 - root - INFO - n_cell_feat 4
+2024-05-02 18:51:07,772 - root - INFO - n_clust_feat 2
+2024-05-02 18:51:07,772 - root - INFO - NUM_COND 1
+2024-05-02 18:51:07,772 - root - INFO - NSamples 1000000
+2024-05-02 18:51:07,772 - root - INFO - npart 200
+2024-05-02 18:51:07,772 - root - INFO - train_fraction 0.7
+2024-05-02 18:51:07,772 - root - INFO - val_fraction 0.2
+2024-05-02 18:51:07,772 - root - INFO - test_fraction 0.1
+2024-05-02 18:51:07,772 - root - INFO - distributed True
+2024-05-02 18:51:07,772 - root - INFO - global_batch_size 128
+2024-05-02 18:51:07,772 - root - INFO - base_batch_size 128
+2024-05-02 18:51:07,772 - root - INFO - BATCH 128
+2024-05-02 18:51:07,772 - root - INFO - LR 0.0001
+2024-05-02 18:51:07,772 - root - INFO - num_epochs 300
+2024-05-02 18:51:07,772 - root - INFO - EARLYSTOP 20
+2024-05-02 18:51:07,772 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 18:51:07,773 - root - INFO - EMBED 64
+2024-05-02 18:51:07,773 - root - INFO - MAX_STEPS 512
+2024-05-02 18:51:07,773 - root - INFO - MODEL_NAME GSGM
+2024-05-02 18:51:07,773 - root - INFO - distill False
+2024-05-02 18:51:07,773 - root - INFO - distill_factor 2
+2024-05-02 18:51:07,773 - root - INFO - amp_mode none
+2024-05-02 18:51:07,773 - root - INFO - expdir ./logs
+2024-05-02 18:51:07,773 - root - INFO - amp_enabled False
+2024-05-02 18:51:07,773 - root - INFO - amp_dtype torch.float32
+2024-05-02 18:51:07,773 - root - INFO - enable_apex False
+2024-05-02 18:51:07,773 - root - INFO - enable_jit False
+2024-05-02 18:51:07,773 - root - INFO - enable_benchy False
+2024-05-02 18:51:07,773 - root - INFO - ---------------------------------------------------
+2024-05-02 18:51:08,745 - root - INFO - rank 0, begin data loader init
+2024-05-02 19:18:19,295 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 19:18:19,295 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 19:18:19,295 - root - INFO - data_path ../data/
+2024-05-02 19:18:19,295 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 19:18:19,295 - root - INFO - n_cell_feat 4
+2024-05-02 19:18:19,295 - root - INFO - n_clust_feat 2
+2024-05-02 19:18:19,295 - root - INFO - NUM_COND 1
+2024-05-02 19:18:19,295 - root - INFO - N_total_Events -1
+2024-05-02 19:18:19,296 - root - INFO - npart 200
+2024-05-02 19:18:19,296 - root - INFO - train_fraction 0.7
+2024-05-02 19:18:19,296 - root - INFO - val_fraction 0.2
+2024-05-02 19:18:19,296 - root - INFO - test_fraction 0.1
+2024-05-02 19:18:19,296 - root - INFO - save_json True
+2024-05-02 19:18:19,296 - root - INFO - distributed True
+2024-05-02 19:18:19,296 - root - INFO - global_batch_size 128
+2024-05-02 19:18:19,296 - root - INFO - base_batch_size 128
+2024-05-02 19:18:19,296 - root - INFO - BATCH 128
+2024-05-02 19:18:19,296 - root - INFO - LR 0.0001
+2024-05-02 19:18:19,296 - root - INFO - num_epochs 300
+2024-05-02 19:18:19,296 - root - INFO - EARLYSTOP 20
+2024-05-02 19:18:19,296 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 19:18:19,296 - root - INFO - EMBED 64
+2024-05-02 19:18:19,296 - root - INFO - MAX_STEPS 512
+2024-05-02 19:18:19,296 - root - INFO - MODEL_NAME GSGM
+2024-05-02 19:18:19,296 - root - INFO - distill False
+2024-05-02 19:18:19,296 - root - INFO - distill_factor 2
+2024-05-02 19:18:19,296 - root - INFO - amp_mode none
+2024-05-02 19:18:19,296 - root - INFO - expdir ./logs
+2024-05-02 19:18:19,297 - root - INFO - amp_enabled False
+2024-05-02 19:18:19,297 - root - INFO - amp_dtype torch.float32
+2024-05-02 19:18:19,297 - root - INFO - enable_apex False
+2024-05-02 19:18:19,297 - root - INFO - enable_jit False
+2024-05-02 19:18:19,297 - root - INFO - enable_benchy False
+2024-05-02 19:18:19,297 - root - INFO - ---------------------------------------------------
+2024-05-02 19:18:20,258 - root - INFO - rank 0, begin data loader init
+2024-05-02 20:04:08,837 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 20:04:08,838 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 20:04:08,838 - root - INFO - data_path ../data/
+2024-05-02 20:04:08,838 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 20:04:08,838 - root - INFO - n_cell_feat 4
+2024-05-02 20:04:08,839 - root - INFO - n_clust_feat 2
+2024-05-02 20:04:08,839 - root - INFO - NUM_COND 1
+2024-05-02 20:04:08,839 - root - INFO - N_samples -1
+2024-05-02 20:04:08,839 - root - INFO - npart 200
+2024-05-02 20:04:08,839 - root - INFO - train_fraction 0.7
+2024-05-02 20:04:08,839 - root - INFO - val_fraction 0.2
+2024-05-02 20:04:08,839 - root - INFO - test_fraction 0.1
+2024-05-02 20:04:08,839 - root - INFO - save_json True
+2024-05-02 20:04:08,839 - root - INFO - distributed True
+2024-05-02 20:04:08,839 - root - INFO - global_batch_size 128
+2024-05-02 20:04:08,839 - root - INFO - base_batch_size 128
+2024-05-02 20:04:08,839 - root - INFO - BATCH 128
+2024-05-02 20:04:08,839 - root - INFO - LR 0.0001
+2024-05-02 20:04:08,839 - root - INFO - num_epochs 300
+2024-05-02 20:04:08,839 - root - INFO - EARLYSTOP 20
+2024-05-02 20:04:08,839 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 20:04:08,839 - root - INFO - EMBED 64
+2024-05-02 20:04:08,839 - root - INFO - MAX_STEPS 512
+2024-05-02 20:04:08,839 - root - INFO - MODEL_NAME GSGM
+2024-05-02 20:04:08,839 - root - INFO - distill False
+2024-05-02 20:04:08,840 - root - INFO - distill_factor 2
+2024-05-02 20:04:08,840 - root - INFO - amp_mode none
+2024-05-02 20:04:08,840 - root - INFO - expdir ./logs
+2024-05-02 20:04:08,840 - root - INFO - amp_enabled False
+2024-05-02 20:04:08,840 - root - INFO - amp_dtype torch.float32
+2024-05-02 20:04:08,840 - root - INFO - enable_apex False
+2024-05-02 20:04:08,840 - root - INFO - enable_jit False
+2024-05-02 20:04:08,840 - root - INFO - enable_benchy False
+2024-05-02 20:04:08,840 - root - INFO - ---------------------------------------------------
+2024-05-02 20:04:09,779 - root - INFO - rank 0, begin data loader init
+2024-05-02 20:10:10,704 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 20:10:10,705 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 20:10:10,705 - root - INFO - data_path ../data/
+2024-05-02 20:10:10,705 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 20:10:10,705 - root - INFO - n_cell_feat 4
+2024-05-02 20:10:10,705 - root - INFO - n_clust_feat 2
+2024-05-02 20:10:10,705 - root - INFO - NUM_COND 1
+2024-05-02 20:10:10,705 - root - INFO - N_samples -1
+2024-05-02 20:10:10,705 - root - INFO - npart 200
+2024-05-02 20:10:10,705 - root - INFO - train_fraction 0.7
+2024-05-02 20:10:10,705 - root - INFO - val_fraction 0.2
+2024-05-02 20:10:10,705 - root - INFO - test_fraction 0.1
+2024-05-02 20:10:10,705 - root - INFO - save_json True
+2024-05-02 20:10:10,705 - root - INFO - distributed True
+2024-05-02 20:10:10,705 - root - INFO - global_batch_size 128
+2024-05-02 20:10:10,705 - root - INFO - base_batch_size 128
+2024-05-02 20:10:10,705 - root - INFO - BATCH 128
+2024-05-02 20:10:10,705 - root - INFO - LR 0.0001
+2024-05-02 20:10:10,705 - root - INFO - num_epochs 300
+2024-05-02 20:10:10,705 - root - INFO - EARLYSTOP 20
+2024-05-02 20:10:10,706 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 20:10:10,706 - root - INFO - EMBED 64
+2024-05-02 20:10:10,706 - root - INFO - MAX_STEPS 512
+2024-05-02 20:10:10,706 - root - INFO - MODEL_NAME GSGM
+2024-05-02 20:10:10,706 - root - INFO - distill False
+2024-05-02 20:10:10,706 - root - INFO - distill_factor 2
+2024-05-02 20:10:10,706 - root - INFO - amp_mode none
+2024-05-02 20:10:10,706 - root - INFO - expdir ./logs
+2024-05-02 20:10:10,706 - root - INFO - amp_enabled False
+2024-05-02 20:10:10,706 - root - INFO - amp_dtype torch.float32
+2024-05-02 20:10:10,706 - root - INFO - enable_apex False
+2024-05-02 20:10:10,706 - root - INFO - enable_jit False
+2024-05-02 20:10:10,706 - root - INFO - enable_benchy False
+2024-05-02 20:10:10,706 - root - INFO - ---------------------------------------------------
+2024-05-02 20:10:11,590 - root - INFO - rank 0, begin data loader init
+2024-05-02 20:19:51,728 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 20:19:51,728 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 20:19:51,729 - root - INFO - data_path ../data/
+2024-05-02 20:19:51,729 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 20:19:51,729 - root - INFO - n_cell_feat 4
+2024-05-02 20:19:51,729 - root - INFO - n_clust_feat 2
+2024-05-02 20:19:51,729 - root - INFO - NUM_COND 1
+2024-05-02 20:19:51,729 - root - INFO - N_samples -1
+2024-05-02 20:19:51,729 - root - INFO - npart 200
+2024-05-02 20:19:51,729 - root - INFO - train_fraction 0.7
+2024-05-02 20:19:51,729 - root - INFO - val_fraction 0.2
+2024-05-02 20:19:51,729 - root - INFO - test_fraction 0.1
+2024-05-02 20:19:51,729 - root - INFO - save_json True
+2024-05-02 20:19:51,729 - root - INFO - distributed True
+2024-05-02 20:19:51,729 - root - INFO - global_batch_size 128
+2024-05-02 20:19:51,729 - root - INFO - base_batch_size 128
+2024-05-02 20:19:51,729 - root - INFO - BATCH 128
+2024-05-02 20:19:51,729 - root - INFO - LR 0.0001
+2024-05-02 20:19:51,729 - root - INFO - num_epochs 300
+2024-05-02 20:19:51,729 - root - INFO - EARLYSTOP 20
+2024-05-02 20:19:51,729 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 20:19:51,729 - root - INFO - EMBED 64
+2024-05-02 20:19:51,730 - root - INFO - MAX_STEPS 512
+2024-05-02 20:19:51,730 - root - INFO - MODEL_NAME GSGM
+2024-05-02 20:19:51,730 - root - INFO - distill False
+2024-05-02 20:19:51,730 - root - INFO - distill_factor 2
+2024-05-02 20:19:51,730 - root - INFO - amp_mode none
+2024-05-02 20:19:51,730 - root - INFO - expdir ./logs
+2024-05-02 20:19:51,730 - root - INFO - amp_enabled False
+2024-05-02 20:19:51,730 - root - INFO - amp_dtype torch.float32
+2024-05-02 20:19:51,730 - root - INFO - enable_apex False
+2024-05-02 20:19:51,730 - root - INFO - enable_jit False
+2024-05-02 20:19:51,730 - root - INFO - enable_benchy False
+2024-05-02 20:19:51,730 - root - INFO - ---------------------------------------------------
+2024-05-02 20:19:52,673 - root - INFO - rank 0, begin data loader init
+2024-05-02 20:21:19,271 - root - INFO - ------------------ Configuration ------------------
+2024-05-02 20:21:19,271 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-02 20:21:19,271 - root - INFO - data_path ../data/
+2024-05-02 20:21:19,271 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-02 20:21:19,272 - root - INFO - n_cell_feat 4
+2024-05-02 20:21:19,272 - root - INFO - n_clust_feat 2
+2024-05-02 20:21:19,272 - root - INFO - NUM_COND 1
+2024-05-02 20:21:19,272 - root - INFO - N_samples -1
+2024-05-02 20:21:19,272 - root - INFO - npart 200
+2024-05-02 20:21:19,272 - root - INFO - train_fraction 0.7
+2024-05-02 20:21:19,272 - root - INFO - val_fraction 0.2
+2024-05-02 20:21:19,272 - root - INFO - test_fraction 0.1
+2024-05-02 20:21:19,272 - root - INFO - save_json True
+2024-05-02 20:21:19,272 - root - INFO - distributed True
+2024-05-02 20:21:19,272 - root - INFO - global_batch_size 128
+2024-05-02 20:21:19,272 - root - INFO - base_batch_size 128
+2024-05-02 20:21:19,272 - root - INFO - BATCH 128
+2024-05-02 20:21:19,272 - root - INFO - LR 0.0001
+2024-05-02 20:21:19,272 - root - INFO - num_epochs 300
+2024-05-02 20:21:19,272 - root - INFO - EARLYSTOP 20
+2024-05-02 20:21:19,272 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-02 20:21:19,272 - root - INFO - EMBED 64
+2024-05-02 20:21:19,272 - root - INFO - MAX_STEPS 512
+2024-05-02 20:21:19,272 - root - INFO - MODEL_NAME GSGM
+2024-05-02 20:21:19,273 - root - INFO - distill False
+2024-05-02 20:21:19,273 - root - INFO - distill_factor 2
+2024-05-02 20:21:19,273 - root - INFO - amp_mode none
+2024-05-02 20:21:19,273 - root - INFO - expdir ./logs
+2024-05-02 20:21:19,273 - root - INFO - amp_enabled False
+2024-05-02 20:21:19,273 - root - INFO - amp_dtype torch.float32
+2024-05-02 20:21:19,273 - root - INFO - enable_apex False
+2024-05-02 20:21:19,273 - root - INFO - enable_jit False
+2024-05-02 20:21:19,273 - root - INFO - enable_benchy False
+2024-05-02 20:21:19,273 - root - INFO - ---------------------------------------------------
+2024-05-02 20:21:20,255 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:25:13,094 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:25:13,095 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:25:13,095 - root - INFO - data_path ../data/
+2024-05-03 08:25:13,095 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:25:13,095 - root - INFO - n_cell_feat 4
+2024-05-03 08:25:13,095 - root - INFO - n_clust_feat 2
+2024-05-03 08:25:13,096 - root - INFO - NUM_COND 1
+2024-05-03 08:25:13,096 - root - INFO - N_samples -1
+2024-05-03 08:25:13,096 - root - INFO - npart 200
+2024-05-03 08:25:13,096 - root - INFO - train_fraction 0.7
+2024-05-03 08:25:13,096 - root - INFO - val_fraction 0.2
+2024-05-03 08:25:13,096 - root - INFO - test_fraction 0.1
+2024-05-03 08:25:13,096 - root - INFO - save_json True
+2024-05-03 08:25:13,096 - root - INFO - distributed True
+2024-05-03 08:25:13,096 - root - INFO - global_batch_size 128
+2024-05-03 08:25:13,096 - root - INFO - base_batch_size 128
+2024-05-03 08:25:13,096 - root - INFO - BATCH 128
+2024-05-03 08:25:13,096 - root - INFO - LR 0.0001
+2024-05-03 08:25:13,096 - root - INFO - num_epochs 300
+2024-05-03 08:25:13,096 - root - INFO - EARLYSTOP 20
+2024-05-03 08:25:13,096 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:25:13,096 - root - INFO - EMBED 64
+2024-05-03 08:25:13,096 - root - INFO - MAX_STEPS 512
+2024-05-03 08:25:13,096 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:25:13,096 - root - INFO - distill False
+2024-05-03 08:25:13,097 - root - INFO - distill_factor 2
+2024-05-03 08:25:13,097 - root - INFO - amp_mode none
+2024-05-03 08:25:13,097 - root - INFO - expdir ./logs
+2024-05-03 08:25:13,097 - root - INFO - amp_enabled False
+2024-05-03 08:25:13,097 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:25:13,097 - root - INFO - enable_apex False
+2024-05-03 08:25:13,097 - root - INFO - enable_jit False
+2024-05-03 08:25:13,097 - root - INFO - enable_benchy False
+2024-05-03 08:25:13,097 - root - INFO - ---------------------------------------------------
+2024-05-03 08:25:13,970 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:28:52,916 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:28:52,916 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:28:52,916 - root - INFO - data_path ../data/
+2024-05-03 08:28:52,916 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:28:52,916 - root - INFO - n_cell_feat 4
+2024-05-03 08:28:52,916 - root - INFO - n_clust_feat 2
+2024-05-03 08:28:52,916 - root - INFO - NUM_COND 1
+2024-05-03 08:28:52,916 - root - INFO - N_samples -1
+2024-05-03 08:28:52,916 - root - INFO - npart 200
+2024-05-03 08:28:52,916 - root - INFO - train_fraction 0.7
+2024-05-03 08:28:52,916 - root - INFO - val_fraction 0.2
+2024-05-03 08:28:52,916 - root - INFO - test_fraction 0.1
+2024-05-03 08:28:52,916 - root - INFO - save_json True
+2024-05-03 08:28:52,916 - root - INFO - distributed True
+2024-05-03 08:28:52,917 - root - INFO - global_batch_size 128
+2024-05-03 08:28:52,917 - root - INFO - base_batch_size 128
+2024-05-03 08:28:52,917 - root - INFO - BATCH 128
+2024-05-03 08:28:52,917 - root - INFO - LR 0.0001
+2024-05-03 08:28:52,917 - root - INFO - num_epochs 300
+2024-05-03 08:28:52,917 - root - INFO - EARLYSTOP 20
+2024-05-03 08:28:52,917 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:28:52,917 - root - INFO - EMBED 64
+2024-05-03 08:28:52,917 - root - INFO - MAX_STEPS 512
+2024-05-03 08:28:52,917 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:28:52,917 - root - INFO - distill False
+2024-05-03 08:28:52,917 - root - INFO - distill_factor 2
+2024-05-03 08:28:52,917 - root - INFO - amp_mode none
+2024-05-03 08:28:52,917 - root - INFO - expdir ./logs
+2024-05-03 08:28:52,917 - root - INFO - amp_enabled False
+2024-05-03 08:28:52,917 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:28:52,917 - root - INFO - enable_apex False
+2024-05-03 08:28:52,917 - root - INFO - enable_jit False
+2024-05-03 08:28:52,917 - root - INFO - enable_benchy False
+2024-05-03 08:28:52,917 - root - INFO - ---------------------------------------------------
+2024-05-03 08:28:53,953 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:29:15,185 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:29:15,185 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:29:15,185 - root - INFO - data_path ../data/
+2024-05-03 08:29:15,185 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:29:15,185 - root - INFO - n_cell_feat 4
+2024-05-03 08:29:15,185 - root - INFO - n_clust_feat 2
+2024-05-03 08:29:15,185 - root - INFO - NUM_COND 1
+2024-05-03 08:29:15,185 - root - INFO - N_samples -1
+2024-05-03 08:29:15,185 - root - INFO - npart 200
+2024-05-03 08:29:15,185 - root - INFO - train_fraction 0.7
+2024-05-03 08:29:15,185 - root - INFO - val_fraction 0.2
+2024-05-03 08:29:15,185 - root - INFO - test_fraction 0.1
+2024-05-03 08:29:15,185 - root - INFO - save_json True
+2024-05-03 08:29:15,185 - root - INFO - distributed True
+2024-05-03 08:29:15,185 - root - INFO - global_batch_size 128
+2024-05-03 08:29:15,186 - root - INFO - base_batch_size 128
+2024-05-03 08:29:15,186 - root - INFO - BATCH 128
+2024-05-03 08:29:15,186 - root - INFO - LR 0.0001
+2024-05-03 08:29:15,186 - root - INFO - num_epochs 300
+2024-05-03 08:29:15,186 - root - INFO - EARLYSTOP 20
+2024-05-03 08:29:15,186 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:29:15,186 - root - INFO - EMBED 64
+2024-05-03 08:29:15,186 - root - INFO - MAX_STEPS 512
+2024-05-03 08:29:15,186 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:29:15,186 - root - INFO - distill False
+2024-05-03 08:29:15,186 - root - INFO - distill_factor 2
+2024-05-03 08:29:15,186 - root - INFO - amp_mode none
+2024-05-03 08:29:15,186 - root - INFO - expdir ./logs
+2024-05-03 08:29:15,186 - root - INFO - amp_enabled False
+2024-05-03 08:29:15,186 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:29:15,186 - root - INFO - enable_apex False
+2024-05-03 08:29:15,186 - root - INFO - enable_jit False
+2024-05-03 08:29:15,186 - root - INFO - enable_benchy False
+2024-05-03 08:29:15,186 - root - INFO - ---------------------------------------------------
+2024-05-03 08:29:16,158 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:31:47,305 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:31:47,306 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:31:47,306 - root - INFO - data_path ../data/
+2024-05-03 08:31:47,306 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:31:47,306 - root - INFO - n_cell_feat 4
+2024-05-03 08:31:47,306 - root - INFO - n_clust_feat 2
+2024-05-03 08:31:47,306 - root - INFO - NUM_COND 1
+2024-05-03 08:31:47,306 - root - INFO - N_samples -1
+2024-05-03 08:31:47,306 - root - INFO - npart 200
+2024-05-03 08:31:47,306 - root - INFO - train_fraction 0.7
+2024-05-03 08:31:47,306 - root - INFO - val_fraction 0.2
+2024-05-03 08:31:47,306 - root - INFO - test_fraction 0.1
+2024-05-03 08:31:47,306 - root - INFO - save_json True
+2024-05-03 08:31:47,306 - root - INFO - distributed True
+2024-05-03 08:31:47,306 - root - INFO - global_batch_size 128
+2024-05-03 08:31:47,306 - root - INFO - base_batch_size 128
+2024-05-03 08:31:47,306 - root - INFO - BATCH 128
+2024-05-03 08:31:47,306 - root - INFO - LR 0.0001
+2024-05-03 08:31:47,306 - root - INFO - num_epochs 300
+2024-05-03 08:31:47,306 - root - INFO - EARLYSTOP 20
+2024-05-03 08:31:47,307 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:31:47,307 - root - INFO - EMBED 64
+2024-05-03 08:31:47,307 - root - INFO - MAX_STEPS 512
+2024-05-03 08:31:47,307 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:31:47,307 - root - INFO - distill False
+2024-05-03 08:31:47,307 - root - INFO - distill_factor 2
+2024-05-03 08:31:47,307 - root - INFO - amp_mode none
+2024-05-03 08:31:47,307 - root - INFO - expdir ./logs
+2024-05-03 08:31:47,307 - root - INFO - amp_enabled False
+2024-05-03 08:31:47,307 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:31:47,307 - root - INFO - enable_apex False
+2024-05-03 08:31:47,307 - root - INFO - enable_jit False
+2024-05-03 08:31:47,307 - root - INFO - enable_benchy False
+2024-05-03 08:31:47,307 - root - INFO - ---------------------------------------------------
+2024-05-03 08:31:48,198 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:33:03,302 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:33:03,302 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:33:03,302 - root - INFO - data_path ../data/
+2024-05-03 08:33:03,302 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:33:03,302 - root - INFO - n_cell_feat 4
+2024-05-03 08:33:03,302 - root - INFO - n_clust_feat 2
+2024-05-03 08:33:03,302 - root - INFO - NUM_COND 1
+2024-05-03 08:33:03,302 - root - INFO - N_samples -1
+2024-05-03 08:33:03,302 - root - INFO - npart 200
+2024-05-03 08:33:03,302 - root - INFO - train_fraction 0.7
+2024-05-03 08:33:03,302 - root - INFO - val_fraction 0.2
+2024-05-03 08:33:03,303 - root - INFO - test_fraction 0.1
+2024-05-03 08:33:03,303 - root - INFO - save_json True
+2024-05-03 08:33:03,303 - root - INFO - distributed True
+2024-05-03 08:33:03,303 - root - INFO - global_batch_size 128
+2024-05-03 08:33:03,303 - root - INFO - base_batch_size 128
+2024-05-03 08:33:03,303 - root - INFO - BATCH 128
+2024-05-03 08:33:03,303 - root - INFO - LR 0.0001
+2024-05-03 08:33:03,303 - root - INFO - num_epochs 300
+2024-05-03 08:33:03,303 - root - INFO - EARLYSTOP 20
+2024-05-03 08:33:03,303 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:33:03,303 - root - INFO - EMBED 64
+2024-05-03 08:33:03,303 - root - INFO - MAX_STEPS 512
+2024-05-03 08:33:03,303 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:33:03,303 - root - INFO - distill False
+2024-05-03 08:33:03,303 - root - INFO - distill_factor 2
+2024-05-03 08:33:03,303 - root - INFO - amp_mode none
+2024-05-03 08:33:03,303 - root - INFO - expdir ./logs
+2024-05-03 08:33:03,303 - root - INFO - amp_enabled False
+2024-05-03 08:33:03,303 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:33:03,303 - root - INFO - enable_apex False
+2024-05-03 08:33:03,304 - root - INFO - enable_jit False
+2024-05-03 08:33:03,304 - root - INFO - enable_benchy False
+2024-05-03 08:33:03,304 - root - INFO - ---------------------------------------------------
+2024-05-03 08:33:04,250 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:35:55,752 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:35:55,752 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:35:55,752 - root - INFO - data_path ../data/
+2024-05-03 08:35:55,752 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:35:55,752 - root - INFO - n_cell_feat 4
+2024-05-03 08:35:55,752 - root - INFO - n_clust_feat 2
+2024-05-03 08:35:55,752 - root - INFO - NUM_COND 1
+2024-05-03 08:35:55,752 - root - INFO - N_samples -1
+2024-05-03 08:35:55,752 - root - INFO - npart 200
+2024-05-03 08:35:55,752 - root - INFO - train_fraction 0.7
+2024-05-03 08:35:55,752 - root - INFO - val_fraction 0.2
+2024-05-03 08:35:55,752 - root - INFO - test_fraction 0.1
+2024-05-03 08:35:55,753 - root - INFO - save_json True
+2024-05-03 08:35:55,753 - root - INFO - distributed True
+2024-05-03 08:35:55,753 - root - INFO - global_batch_size 128
+2024-05-03 08:35:55,753 - root - INFO - base_batch_size 128
+2024-05-03 08:35:55,753 - root - INFO - BATCH 128
+2024-05-03 08:35:55,753 - root - INFO - LR 0.0001
+2024-05-03 08:35:55,753 - root - INFO - num_epochs 300
+2024-05-03 08:35:55,753 - root - INFO - EARLYSTOP 20
+2024-05-03 08:35:55,753 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:35:55,753 - root - INFO - EMBED 64
+2024-05-03 08:35:55,753 - root - INFO - MAX_STEPS 512
+2024-05-03 08:35:55,753 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:35:55,753 - root - INFO - distill False
+2024-05-03 08:35:55,753 - root - INFO - distill_factor 2
+2024-05-03 08:35:55,753 - root - INFO - amp_mode none
+2024-05-03 08:35:55,753 - root - INFO - expdir ./logs
+2024-05-03 08:35:55,753 - root - INFO - amp_enabled False
+2024-05-03 08:35:55,753 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:35:55,753 - root - INFO - enable_apex False
+2024-05-03 08:35:55,753 - root - INFO - enable_jit False
+2024-05-03 08:35:55,753 - root - INFO - enable_benchy False
+2024-05-03 08:35:55,754 - root - INFO - ---------------------------------------------------
+2024-05-03 08:35:56,641 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:37:21,357 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:37:21,357 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:37:21,357 - root - INFO - data_path ../data/
+2024-05-03 08:37:21,357 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:37:21,357 - root - INFO - n_cell_feat 4
+2024-05-03 08:37:21,357 - root - INFO - n_clust_feat 2
+2024-05-03 08:37:21,357 - root - INFO - NUM_COND 1
+2024-05-03 08:37:21,357 - root - INFO - N_samples -1
+2024-05-03 08:37:21,358 - root - INFO - npart 200
+2024-05-03 08:37:21,358 - root - INFO - train_fraction 0.7
+2024-05-03 08:37:21,358 - root - INFO - val_fraction 0.2
+2024-05-03 08:37:21,358 - root - INFO - test_fraction 0.1
+2024-05-03 08:37:21,358 - root - INFO - save_json True
+2024-05-03 08:37:21,358 - root - INFO - distributed True
+2024-05-03 08:37:21,358 - root - INFO - global_batch_size 128
+2024-05-03 08:37:21,358 - root - INFO - base_batch_size 128
+2024-05-03 08:37:21,358 - root - INFO - BATCH 128
+2024-05-03 08:37:21,358 - root - INFO - LR 0.0001
+2024-05-03 08:37:21,358 - root - INFO - num_epochs 300
+2024-05-03 08:37:21,358 - root - INFO - EARLYSTOP 20
+2024-05-03 08:37:21,358 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:37:21,358 - root - INFO - EMBED 64
+2024-05-03 08:37:21,358 - root - INFO - MAX_STEPS 512
+2024-05-03 08:37:21,358 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:37:21,358 - root - INFO - distill False
+2024-05-03 08:37:21,358 - root - INFO - distill_factor 2
+2024-05-03 08:37:21,358 - root - INFO - amp_mode none
+2024-05-03 08:37:21,358 - root - INFO - expdir ./logs
+2024-05-03 08:37:21,358 - root - INFO - amp_enabled False
+2024-05-03 08:37:21,359 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:37:21,359 - root - INFO - enable_apex False
+2024-05-03 08:37:21,359 - root - INFO - enable_jit False
+2024-05-03 08:37:21,359 - root - INFO - enable_benchy False
+2024-05-03 08:37:21,359 - root - INFO - ---------------------------------------------------
+2024-05-03 08:37:22,340 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:38:47,646 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:38:47,646 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:38:47,646 - root - INFO - data_path ../data/
+2024-05-03 08:38:47,646 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:38:47,646 - root - INFO - n_cell_feat 4
+2024-05-03 08:38:47,646 - root - INFO - n_clust_feat 2
+2024-05-03 08:38:47,647 - root - INFO - NUM_COND 1
+2024-05-03 08:38:47,647 - root - INFO - N_samples -1
+2024-05-03 08:38:47,647 - root - INFO - npart 200
+2024-05-03 08:38:47,647 - root - INFO - train_fraction 0.7
+2024-05-03 08:38:47,647 - root - INFO - val_fraction 0.2
+2024-05-03 08:38:47,647 - root - INFO - test_fraction 0.1
+2024-05-03 08:38:47,647 - root - INFO - save_json True
+2024-05-03 08:38:47,647 - root - INFO - distributed True
+2024-05-03 08:38:47,647 - root - INFO - global_batch_size 128
+2024-05-03 08:38:47,647 - root - INFO - base_batch_size 128
+2024-05-03 08:38:47,647 - root - INFO - BATCH 128
+2024-05-03 08:38:47,647 - root - INFO - LR 0.0001
+2024-05-03 08:38:47,647 - root - INFO - num_epochs 300
+2024-05-03 08:38:47,647 - root - INFO - EARLYSTOP 20
+2024-05-03 08:38:47,647 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:38:47,647 - root - INFO - EMBED 64
+2024-05-03 08:38:47,647 - root - INFO - MAX_STEPS 512
+2024-05-03 08:38:47,647 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:38:47,647 - root - INFO - distill False
+2024-05-03 08:38:47,648 - root - INFO - distill_factor 2
+2024-05-03 08:38:47,648 - root - INFO - amp_mode none
+2024-05-03 08:38:47,648 - root - INFO - expdir ./logs
+2024-05-03 08:38:47,648 - root - INFO - amp_enabled False
+2024-05-03 08:38:47,648 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:38:47,648 - root - INFO - enable_apex False
+2024-05-03 08:38:47,648 - root - INFO - enable_jit False
+2024-05-03 08:38:47,648 - root - INFO - enable_benchy False
+2024-05-03 08:38:47,648 - root - INFO - ---------------------------------------------------
+2024-05-03 08:38:48,629 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:40:58,261 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:40:58,261 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:40:58,261 - root - INFO - data_path ../data/
+2024-05-03 08:40:58,261 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:40:58,261 - root - INFO - n_cell_feat 4
+2024-05-03 08:40:58,261 - root - INFO - n_clust_feat 2
+2024-05-03 08:40:58,261 - root - INFO - NUM_COND 1
+2024-05-03 08:40:58,261 - root - INFO - N_samples -1
+2024-05-03 08:40:58,261 - root - INFO - npart 200
+2024-05-03 08:40:58,261 - root - INFO - train_fraction 0.7
+2024-05-03 08:40:58,261 - root - INFO - val_fraction 0.2
+2024-05-03 08:40:58,261 - root - INFO - test_fraction 0.1
+2024-05-03 08:40:58,261 - root - INFO - save_json True
+2024-05-03 08:40:58,262 - root - INFO - distributed True
+2024-05-03 08:40:58,262 - root - INFO - global_batch_size 128
+2024-05-03 08:40:58,262 - root - INFO - base_batch_size 128
+2024-05-03 08:40:58,262 - root - INFO - BATCH 128
+2024-05-03 08:40:58,262 - root - INFO - LR 0.0001
+2024-05-03 08:40:58,262 - root - INFO - num_epochs 300
+2024-05-03 08:40:58,262 - root - INFO - EARLYSTOP 20
+2024-05-03 08:40:58,262 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:40:58,262 - root - INFO - EMBED 64
+2024-05-03 08:40:58,262 - root - INFO - MAX_STEPS 512
+2024-05-03 08:40:58,262 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:40:58,262 - root - INFO - distill False
+2024-05-03 08:40:58,262 - root - INFO - distill_factor 2
+2024-05-03 08:40:58,262 - root - INFO - amp_mode none
+2024-05-03 08:40:58,262 - root - INFO - expdir ./logs
+2024-05-03 08:40:58,262 - root - INFO - amp_enabled False
+2024-05-03 08:40:58,262 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:40:58,262 - root - INFO - enable_apex False
+2024-05-03 08:40:58,262 - root - INFO - enable_jit False
+2024-05-03 08:40:58,263 - root - INFO - enable_benchy False
+2024-05-03 08:40:58,263 - root - INFO - ---------------------------------------------------
+2024-05-03 08:40:59,264 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:42:10,297 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:42:10,297 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:42:10,297 - root - INFO - data_path ../data/
+2024-05-03 08:42:10,297 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:42:10,297 - root - INFO - n_cell_feat 4
+2024-05-03 08:42:10,297 - root - INFO - n_clust_feat 2
+2024-05-03 08:42:10,297 - root - INFO - NUM_COND 1
+2024-05-03 08:42:10,297 - root - INFO - N_samples -1
+2024-05-03 08:42:10,297 - root - INFO - npart 200
+2024-05-03 08:42:10,297 - root - INFO - train_fraction 0.7
+2024-05-03 08:42:10,297 - root - INFO - val_fraction 0.2
+2024-05-03 08:42:10,297 - root - INFO - test_fraction 0.1
+2024-05-03 08:42:10,297 - root - INFO - save_json True
+2024-05-03 08:42:10,297 - root - INFO - distributed True
+2024-05-03 08:42:10,297 - root - INFO - global_batch_size 128
+2024-05-03 08:42:10,297 - root - INFO - base_batch_size 128
+2024-05-03 08:42:10,297 - root - INFO - BATCH 128
+2024-05-03 08:42:10,297 - root - INFO - LR 0.0001
+2024-05-03 08:42:10,298 - root - INFO - num_epochs 300
+2024-05-03 08:42:10,298 - root - INFO - EARLYSTOP 20
+2024-05-03 08:42:10,298 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:42:10,298 - root - INFO - EMBED 64
+2024-05-03 08:42:10,298 - root - INFO - MAX_STEPS 512
+2024-05-03 08:42:10,298 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:42:10,298 - root - INFO - distill False
+2024-05-03 08:42:10,298 - root - INFO - distill_factor 2
+2024-05-03 08:42:10,298 - root - INFO - amp_mode none
+2024-05-03 08:42:10,298 - root - INFO - expdir ./logs
+2024-05-03 08:42:10,298 - root - INFO - amp_enabled False
+2024-05-03 08:42:10,298 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:42:10,298 - root - INFO - enable_apex False
+2024-05-03 08:42:10,298 - root - INFO - enable_jit False
+2024-05-03 08:42:10,298 - root - INFO - enable_benchy False
+2024-05-03 08:42:10,298 - root - INFO - ---------------------------------------------------
+2024-05-03 08:42:11,235 - root - INFO - rank 0, begin data loader init
+2024-05-03 08:43:29,995 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 08:43:29,995 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 08:43:29,995 - root - INFO - data_path ../data/
+2024-05-03 08:43:29,995 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 08:43:29,995 - root - INFO - n_cell_feat 4
+2024-05-03 08:43:29,996 - root - INFO - n_clust_feat 2
+2024-05-03 08:43:29,996 - root - INFO - NUM_COND 1
+2024-05-03 08:43:29,996 - root - INFO - N_samples -1
+2024-05-03 08:43:29,996 - root - INFO - npart 200
+2024-05-03 08:43:29,996 - root - INFO - train_fraction 0.7
+2024-05-03 08:43:29,996 - root - INFO - val_fraction 0.2
+2024-05-03 08:43:29,996 - root - INFO - test_fraction 0.1
+2024-05-03 08:43:29,996 - root - INFO - save_json True
+2024-05-03 08:43:29,996 - root - INFO - distributed True
+2024-05-03 08:43:29,996 - root - INFO - global_batch_size 128
+2024-05-03 08:43:29,996 - root - INFO - base_batch_size 128
+2024-05-03 08:43:29,996 - root - INFO - BATCH 128
+2024-05-03 08:43:29,996 - root - INFO - LR 0.0001
+2024-05-03 08:43:29,996 - root - INFO - num_epochs 300
+2024-05-03 08:43:29,996 - root - INFO - EARLYSTOP 20
+2024-05-03 08:43:29,996 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 08:43:29,996 - root - INFO - EMBED 64
+2024-05-03 08:43:29,996 - root - INFO - MAX_STEPS 512
+2024-05-03 08:43:29,996 - root - INFO - MODEL_NAME GSGM
+2024-05-03 08:43:29,996 - root - INFO - distill False
+2024-05-03 08:43:29,997 - root - INFO - distill_factor 2
+2024-05-03 08:43:29,997 - root - INFO - amp_mode none
+2024-05-03 08:43:29,997 - root - INFO - expdir ./logs
+2024-05-03 08:43:29,997 - root - INFO - amp_enabled False
+2024-05-03 08:43:29,997 - root - INFO - amp_dtype torch.float32
+2024-05-03 08:43:29,997 - root - INFO - enable_apex False
+2024-05-03 08:43:29,997 - root - INFO - enable_jit False
+2024-05-03 08:43:29,997 - root - INFO - enable_benchy False
+2024-05-03 08:43:29,997 - root - INFO - ---------------------------------------------------
+2024-05-03 08:43:30,952 - root - INFO - rank 0, begin data loader init
+2024-05-03 09:52:03,808 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 09:52:03,809 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 09:52:03,809 - root - INFO - data_path ../data/
+2024-05-03 09:52:03,809 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 09:52:03,809 - root - INFO - n_cell_feat 4
+2024-05-03 09:52:03,809 - root - INFO - n_clust_feat 2
+2024-05-03 09:52:03,809 - root - INFO - NUM_COND 1
+2024-05-03 09:52:03,809 - root - INFO - N_samples -1
+2024-05-03 09:52:03,809 - root - INFO - npart 200
+2024-05-03 09:52:03,810 - root - INFO - train_fraction 0.7
+2024-05-03 09:52:03,810 - root - INFO - val_fraction 0.2
+2024-05-03 09:52:03,810 - root - INFO - test_fraction 0.1
+2024-05-03 09:52:03,810 - root - INFO - save_json True
+2024-05-03 09:52:03,810 - root - INFO - distributed True
+2024-05-03 09:52:03,810 - root - INFO - global_batch_size 128
+2024-05-03 09:52:03,810 - root - INFO - base_batch_size 128
+2024-05-03 09:52:03,810 - root - INFO - BATCH 128
+2024-05-03 09:52:03,810 - root - INFO - LR 0.0001
+2024-05-03 09:52:03,810 - root - INFO - num_epochs 300
+2024-05-03 09:52:03,810 - root - INFO - EARLYSTOP 20
+2024-05-03 09:52:03,810 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 09:52:03,810 - root - INFO - EMBED 64
+2024-05-03 09:52:03,810 - root - INFO - MAX_STEPS 512
+2024-05-03 09:52:03,810 - root - INFO - MODEL_NAME GSGM
+2024-05-03 09:52:03,810 - root - INFO - distill False
+2024-05-03 09:52:03,810 - root - INFO - distill_factor 2
+2024-05-03 09:52:03,810 - root - INFO - amp_mode none
+2024-05-03 09:52:03,810 - root - INFO - expdir ./logs
+2024-05-03 09:52:03,811 - root - INFO - amp_enabled False
+2024-05-03 09:52:03,811 - root - INFO - amp_dtype torch.float32
+2024-05-03 09:52:03,811 - root - INFO - enable_apex False
+2024-05-03 09:52:03,811 - root - INFO - enable_jit False
+2024-05-03 09:52:03,811 - root - INFO - enable_benchy False
+2024-05-03 09:52:03,811 - root - INFO - ---------------------------------------------------
+2024-05-03 09:52:04,710 - root - INFO - rank 0, begin data loader init
+2024-05-03 09:53:24,787 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 09:53:24,787 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 09:53:24,787 - root - INFO - data_path ../data/
+2024-05-03 09:53:24,787 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 09:53:24,787 - root - INFO - n_cell_feat 4
+2024-05-03 09:53:24,787 - root - INFO - n_clust_feat 2
+2024-05-03 09:53:24,787 - root - INFO - NUM_COND 1
+2024-05-03 09:53:24,787 - root - INFO - N_samples -1
+2024-05-03 09:53:24,787 - root - INFO - npart 200
+2024-05-03 09:53:24,787 - root - INFO - train_fraction 0.7
+2024-05-03 09:53:24,787 - root - INFO - val_fraction 0.2
+2024-05-03 09:53:24,787 - root - INFO - test_fraction 0.1
+2024-05-03 09:53:24,787 - root - INFO - save_json True
+2024-05-03 09:53:24,787 - root - INFO - distributed True
+2024-05-03 09:53:24,787 - root - INFO - global_batch_size 128
+2024-05-03 09:53:24,788 - root - INFO - base_batch_size 128
+2024-05-03 09:53:24,788 - root - INFO - BATCH 128
+2024-05-03 09:53:24,788 - root - INFO - LR 0.0001
+2024-05-03 09:53:24,788 - root - INFO - num_epochs 300
+2024-05-03 09:53:24,788 - root - INFO - EARLYSTOP 20
+2024-05-03 09:53:24,788 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 09:53:24,788 - root - INFO - EMBED 64
+2024-05-03 09:53:24,788 - root - INFO - MAX_STEPS 512
+2024-05-03 09:53:24,788 - root - INFO - MODEL_NAME GSGM
+2024-05-03 09:53:24,788 - root - INFO - distill False
+2024-05-03 09:53:24,788 - root - INFO - distill_factor 2
+2024-05-03 09:53:24,788 - root - INFO - amp_mode none
+2024-05-03 09:53:24,788 - root - INFO - expdir ./logs
+2024-05-03 09:53:24,788 - root - INFO - amp_enabled False
+2024-05-03 09:53:24,788 - root - INFO - amp_dtype torch.float32
+2024-05-03 09:53:24,788 - root - INFO - enable_apex False
+2024-05-03 09:53:24,788 - root - INFO - enable_jit False
+2024-05-03 09:53:24,788 - root - INFO - enable_benchy False
+2024-05-03 09:53:24,788 - root - INFO - ---------------------------------------------------
+2024-05-03 09:53:25,704 - root - INFO - rank 0, begin data loader init
+2024-05-03 09:55:23,314 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 09:55:23,315 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 09:55:23,315 - root - INFO - data_path ../data/
+2024-05-03 09:55:23,315 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 09:55:23,315 - root - INFO - n_cell_feat 4
+2024-05-03 09:55:23,315 - root - INFO - n_clust_feat 2
+2024-05-03 09:55:23,315 - root - INFO - NUM_COND 1
+2024-05-03 09:55:23,315 - root - INFO - N_samples -1
+2024-05-03 09:55:23,315 - root - INFO - npart 200
+2024-05-03 09:55:23,315 - root - INFO - train_fraction 0.7
+2024-05-03 09:55:23,315 - root - INFO - val_fraction 0.2
+2024-05-03 09:55:23,315 - root - INFO - test_fraction 0.1
+2024-05-03 09:55:23,315 - root - INFO - save_json True
+2024-05-03 09:55:23,315 - root - INFO - distributed True
+2024-05-03 09:55:23,315 - root - INFO - global_batch_size 128
+2024-05-03 09:55:23,315 - root - INFO - base_batch_size 128
+2024-05-03 09:55:23,315 - root - INFO - BATCH 128
+2024-05-03 09:55:23,315 - root - INFO - LR 0.0001
+2024-05-03 09:55:23,315 - root - INFO - num_epochs 300
+2024-05-03 09:55:23,316 - root - INFO - EARLYSTOP 20
+2024-05-03 09:55:23,316 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 09:55:23,316 - root - INFO - EMBED 64
+2024-05-03 09:55:23,316 - root - INFO - MAX_STEPS 512
+2024-05-03 09:55:23,316 - root - INFO - MODEL_NAME GSGM
+2024-05-03 09:55:23,316 - root - INFO - distill False
+2024-05-03 09:55:23,316 - root - INFO - distill_factor 2
+2024-05-03 09:55:23,316 - root - INFO - amp_mode none
+2024-05-03 09:55:23,316 - root - INFO - expdir ./logs
+2024-05-03 09:55:23,316 - root - INFO - amp_enabled False
+2024-05-03 09:55:23,316 - root - INFO - amp_dtype torch.float32
+2024-05-03 09:55:23,316 - root - INFO - enable_apex False
+2024-05-03 09:55:23,316 - root - INFO - enable_jit False
+2024-05-03 09:55:23,316 - root - INFO - enable_benchy False
+2024-05-03 09:55:23,316 - root - INFO - ---------------------------------------------------
+2024-05-03 09:55:24,258 - root - INFO - rank 0, begin data loader init
+2024-05-03 10:01:12,638 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 10:01:12,638 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 10:01:12,638 - root - INFO - data_path ../data/
+2024-05-03 10:01:12,638 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 10:01:12,638 - root - INFO - n_cell_feat 4
+2024-05-03 10:01:12,638 - root - INFO - n_clust_feat 2
+2024-05-03 10:01:12,638 - root - INFO - NUM_COND 1
+2024-05-03 10:01:12,638 - root - INFO - N_samples -1
+2024-05-03 10:01:12,638 - root - INFO - npart 200
+2024-05-03 10:01:12,638 - root - INFO - train_fraction 0.7
+2024-05-03 10:01:12,638 - root - INFO - val_fraction 0.2
+2024-05-03 10:01:12,638 - root - INFO - test_fraction 0.1
+2024-05-03 10:01:12,638 - root - INFO - save_json True
+2024-05-03 10:01:12,639 - root - INFO - distributed True
+2024-05-03 10:01:12,639 - root - INFO - global_batch_size 128
+2024-05-03 10:01:12,639 - root - INFO - base_batch_size 128
+2024-05-03 10:01:12,639 - root - INFO - BATCH 128
+2024-05-03 10:01:12,639 - root - INFO - LR 0.0001
+2024-05-03 10:01:12,639 - root - INFO - num_epochs 300
+2024-05-03 10:01:12,639 - root - INFO - EARLYSTOP 20
+2024-05-03 10:01:12,639 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 10:01:12,639 - root - INFO - EMBED 64
+2024-05-03 10:01:12,639 - root - INFO - MAX_STEPS 512
+2024-05-03 10:01:12,639 - root - INFO - MODEL_NAME GSGM
+2024-05-03 10:01:12,639 - root - INFO - distill False
+2024-05-03 10:01:12,639 - root - INFO - distill_factor 2
+2024-05-03 10:01:12,640 - root - INFO - amp_mode none
+2024-05-03 10:01:12,640 - root - INFO - expdir ./logs
+2024-05-03 10:01:12,640 - root - INFO - amp_enabled False
+2024-05-03 10:01:12,640 - root - INFO - amp_dtype torch.float32
+2024-05-03 10:01:12,640 - root - INFO - enable_apex False
+2024-05-03 10:01:12,640 - root - INFO - enable_jit False
+2024-05-03 10:01:12,640 - root - INFO - enable_benchy False
+2024-05-03 10:01:12,640 - root - INFO - ---------------------------------------------------
+2024-05-03 10:01:13,516 - root - INFO - rank 0, begin data loader init
+2024-05-03 10:04:33,795 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 10:04:33,796 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 10:04:33,796 - root - INFO - data_path ../data/
+2024-05-03 10:04:33,796 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 10:04:33,796 - root - INFO - n_cell_feat 4
+2024-05-03 10:04:33,796 - root - INFO - n_clust_feat 2
+2024-05-03 10:04:33,796 - root - INFO - NUM_COND 1
+2024-05-03 10:04:33,796 - root - INFO - N_samples -1
+2024-05-03 10:04:33,796 - root - INFO - npart 200
+2024-05-03 10:04:33,796 - root - INFO - train_fraction 0.7
+2024-05-03 10:04:33,796 - root - INFO - val_fraction 0.2
+2024-05-03 10:04:33,796 - root - INFO - test_fraction 0.1
+2024-05-03 10:04:33,796 - root - INFO - save_json True
+2024-05-03 10:04:33,796 - root - INFO - distributed True
+2024-05-03 10:04:33,796 - root - INFO - global_batch_size 128
+2024-05-03 10:04:33,796 - root - INFO - base_batch_size 128
+2024-05-03 10:04:33,796 - root - INFO - BATCH 128
+2024-05-03 10:04:33,796 - root - INFO - LR 0.0001
+2024-05-03 10:04:33,796 - root - INFO - num_epochs 300
+2024-05-03 10:04:33,796 - root - INFO - EARLYSTOP 20
+2024-05-03 10:04:33,797 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 10:04:33,797 - root - INFO - EMBED 64
+2024-05-03 10:04:33,797 - root - INFO - MAX_STEPS 512
+2024-05-03 10:04:33,797 - root - INFO - MODEL_NAME GSGM
+2024-05-03 10:04:33,797 - root - INFO - distill False
+2024-05-03 10:04:33,797 - root - INFO - distill_factor 2
+2024-05-03 10:04:33,797 - root - INFO - amp_mode none
+2024-05-03 10:04:33,797 - root - INFO - expdir ./logs
+2024-05-03 10:04:33,797 - root - INFO - amp_enabled False
+2024-05-03 10:04:33,797 - root - INFO - amp_dtype torch.float32
+2024-05-03 10:04:33,797 - root - INFO - enable_apex False
+2024-05-03 10:04:33,797 - root - INFO - enable_jit False
+2024-05-03 10:04:33,797 - root - INFO - enable_benchy False
+2024-05-03 10:04:33,797 - root - INFO - ---------------------------------------------------
+2024-05-03 10:04:34,711 - root - INFO - rank 0, begin data loader init
+2024-05-03 10:04:55,089 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 10:04:55,089 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 10:04:55,089 - root - INFO - data_path ../data/
+2024-05-03 10:04:55,089 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 10:04:55,089 - root - INFO - n_cell_feat 4
+2024-05-03 10:04:55,089 - root - INFO - n_clust_feat 2
+2024-05-03 10:04:55,089 - root - INFO - NUM_COND 1
+2024-05-03 10:04:55,089 - root - INFO - N_samples -1
+2024-05-03 10:04:55,089 - root - INFO - npart 200
+2024-05-03 10:04:55,089 - root - INFO - train_fraction 0.7
+2024-05-03 10:04:55,089 - root - INFO - val_fraction 0.2
+2024-05-03 10:04:55,090 - root - INFO - test_fraction 0.1
+2024-05-03 10:04:55,090 - root - INFO - save_json True
+2024-05-03 10:04:55,090 - root - INFO - distributed True
+2024-05-03 10:04:55,090 - root - INFO - global_batch_size 128
+2024-05-03 10:04:55,090 - root - INFO - base_batch_size 128
+2024-05-03 10:04:55,090 - root - INFO - BATCH 128
+2024-05-03 10:04:55,090 - root - INFO - LR 0.0001
+2024-05-03 10:04:55,090 - root - INFO - num_epochs 300
+2024-05-03 10:04:55,090 - root - INFO - EARLYSTOP 20
+2024-05-03 10:04:55,090 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 10:04:55,090 - root - INFO - EMBED 64
+2024-05-03 10:04:55,090 - root - INFO - MAX_STEPS 512
+2024-05-03 10:04:55,090 - root - INFO - MODEL_NAME GSGM
+2024-05-03 10:04:55,090 - root - INFO - distill False
+2024-05-03 10:04:55,090 - root - INFO - distill_factor 2
+2024-05-03 10:04:55,090 - root - INFO - amp_mode none
+2024-05-03 10:04:55,090 - root - INFO - expdir ./logs
+2024-05-03 10:04:55,090 - root - INFO - amp_enabled False
+2024-05-03 10:04:55,090 - root - INFO - amp_dtype torch.float32
+2024-05-03 10:04:55,091 - root - INFO - enable_apex False
+2024-05-03 10:04:55,091 - root - INFO - enable_jit False
+2024-05-03 10:04:55,091 - root - INFO - enable_benchy False
+2024-05-03 10:04:55,091 - root - INFO - ---------------------------------------------------
+2024-05-03 10:04:56,025 - root - INFO - rank 0, begin data loader init
+2024-05-03 10:05:43,118 - root - INFO - ------------------ Configuration ------------------
+2024-05-03 10:05:43,118 - root - INFO - Configuration file: /pscratch/sd/f/fernando/point_cloud_diffusion/configs/default_config.yaml
+2024-05-03 10:05:43,118 - root - INFO - data_path ../data/
+2024-05-03 10:05:43,118 - root - INFO - files ['G4_5x5_smeared.h5']
+2024-05-03 10:05:43,118 - root - INFO - n_cell_feat 4
+2024-05-03 10:05:43,118 - root - INFO - n_clust_feat 2
+2024-05-03 10:05:43,119 - root - INFO - NUM_COND 1
+2024-05-03 10:05:43,119 - root - INFO - N_samples -1
+2024-05-03 10:05:43,119 - root - INFO - npart 200
+2024-05-03 10:05:43,119 - root - INFO - train_fraction 0.7
+2024-05-03 10:05:43,119 - root - INFO - val_fraction 0.2
+2024-05-03 10:05:43,119 - root - INFO - test_fraction 0.1
+2024-05-03 10:05:43,119 - root - INFO - save_json True
+2024-05-03 10:05:43,119 - root - INFO - distributed True
+2024-05-03 10:05:43,119 - root - INFO - global_batch_size 128
+2024-05-03 10:05:43,119 - root - INFO - base_batch_size 128
+2024-05-03 10:05:43,119 - root - INFO - BATCH 128
+2024-05-03 10:05:43,119 - root - INFO - LR 0.0001
+2024-05-03 10:05:43,119 - root - INFO - num_epochs 300
+2024-05-03 10:05:43,120 - root - INFO - EARLYSTOP 20
+2024-05-03 10:05:43,120 - root - INFO - lr_schedule {'scaling': 'sqrt', 'start_lr': 0.0002, 'end_lr': 0.0, 'warmup_steps': 128}
+2024-05-03 10:05:43,120 - root - INFO - EMBED 64
+2024-05-03 10:05:43,120 - root - INFO - MAX_STEPS 512
+2024-05-03 10:05:43,120 - root - INFO - MODEL_NAME GSGM
+2024-05-03 10:05:43,120 - root - INFO - distill False
+2024-05-03 10:05:43,120 - root - INFO - distill_factor 2
+2024-05-03 10:05:43,120 - root - INFO - amp_mode none
+2024-05-03 10:05:43,120 - root - INFO - expdir ./logs
+2024-05-03 10:05:43,120 - root - INFO - amp_enabled False
+2024-05-03 10:05:43,120 - root - INFO - amp_dtype torch.float32
+2024-05-03 10:05:43,120 - root - INFO - enable_apex False
+2024-05-03 10:05:43,120 - root - INFO - enable_jit False
+2024-05-03 10:05:43,120 - root - INFO - enable_benchy False
+2024-05-03 10:05:43,121 - root - INFO - ---------------------------------------------------
+2024-05-03 10:05:44,170 - root - INFO - rank 0, begin data loader init

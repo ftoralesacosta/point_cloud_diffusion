@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.utils import shuffle
 import torch
 from torch.utils.data import Dataset, TensorDataset, DataLoader, DistributedSampler
+from icecream import ic
 # from plotting import *  #keep for plotting part of loader
 
 np.random.seed(0)  # fix the seed to keep track of validation split
@@ -54,44 +55,67 @@ def get_data_loader(params, world_rank, device=0):
 
     return train_loader, val_loader
 
-class ColliderDataset(Dataset
-                      data_path,
-                      labels,
-                      npart,
-                      rank=0,
-                      size=1,
-                      ncluster_var=2,
-                      num_condition=2,  #genP,genTheta
-                      batch_size=64,
-                      make_tf_data=True,
-                      split=0.8):
+class ColliderDataset(Dataset):
 
-    def __init__(self, params):
+    def __init__(self, 
+                 params,
+                 validation=False,
+                 rank=0,
+                 size=1,
+                 ncluster_var=2,
+                 num_condition=2,  #genP,genTheta
+                 batch_size=64,
+                 make_tf_data=True,
+                 split=0.8):
 
-        self.size = params.data_size
-        self.n_cluster_feat = 2
+        self.n_cluster_feat = params.n_clust_feat
         self.n_cond = 2
-        self.inmem = False  # loads all data into memory
-        self.data_path = data_path
+        self.inmem = True  # loads all data into memory
+        self.data_path = params.data_path
+
+        # Files names based on n_particels param
+        if params.npart == 200:
+            params.files = ['G4_5x5_smeared.h5']
+        elif params.npart == 1000:
+            params.files = ['log10_Uniform_03-23.hdf5']
 
         if not validation:
-            self.event_fraction = params.event_fraction
+            self.event_fraction = params.train_fraction
         else:
-            self.event_fraction = params.event_fraction_val
+            self.event_fraction = params.val_fraction
 
-        self.file_name = labels[0] 
+        #FIXME: add test case!
+
+        print(params.files[0])
+        self.file_name = params.files[0]
         # FIXME: for multiple h5 files, save the filenames, 
 
-        with h5.File(os.path.join(data_path, self.file_name),'r') as h5file:
-            self.n_total = h5file['cluster'][:].shape[0]
-            self.Nsamples = int(n_total*self.event_fraction)
+        n_total = params.N_samples
+        if params.N_samples == -1:
+            for file in params.files:
+                with h5.File(os.path.join(params.data_path,
+                                      self.file_name),'r') as h5file:
 
-            if validation:
-                self.event_slice = np.s_[:self.Nsamples]
+                    n_total += h5file['cluster'][:].shape[0]
+                    params.update({"N_samples": n_total})
 
-            else:
-                self.event_slice = np.s_[self.Nsamples:]
+            #Need the size of the resulting partition for train/val
+            #Need the total number of events in the hdf5 file for above
+            #need the train/val fractions, for above, and slices
 
+        self.n_val = int(params.N_samples*params.val_fraction)
+        self.n_train = int(params.N_samples*params.train_fraction)# broadway express
+        self.n_test = int(params.N_samples*params.train_fraction)
+
+        if not validation:
+            self.event_slice = np.s_[:self.n_train]
+
+        else:
+            self.event_slice = np.s_[self.n_train:self.n_train+self.n_val]
+
+        #test
+        # self.event_slice = \
+        #np.s_[self.n_train+self.n_val:self.n_train+self.n_val+self.n_test]
 
 
 
@@ -102,34 +126,40 @@ class ColliderDataset(Dataset
             self.clusters = []
             self.conditions = []
 
-            for label in labels:
-                with h5.File(os.path.join(data_path,label),"r") as h5f:
+            for file in params.files:
+                with h5.File(os.path.join(params.data_path, file),"r") as h5f:
 
-                    cell=torch.from_numpy(h5f['hcal_cells'][self.event_slice].astype(np.float32))
-
-                    cluster=torch.from_numpy(h5f['cluster'][self.event_slice].astype(np.float32))
+                    #FIXME: Below logic only works with single file
+                    cell=h5f['hcal_cells'][self.event_slice].astype(np.float32)
+                    cluster=h5f['cluster'][self.event_slice].astype(np.float32)
 
                     self.cells.append(cell)
                     self.clusters.append(cluster)
+                    print(np.shape(self.cells))
 
-            print("#"*40)
-            print("CELLs in DATALOADER = ", cells)
-            print("-"*40)
-            print("Clusters in DATALOADER = ", clusters)
-            print("-"*40)
-
-            self.Nsamples = cells.shape[0]
+            self.clusters = np.concatenate(self.clusters)
+            self.cells = np.concatenate(self.cells)
+            print(np.shape(self.cells))
 
             # Take Log10 of GenP
             self.clusters = np.where(self.clusters[:,0] > 0.0, 
-                                np.log10(self.clusters[:,0]), 0.0)
+                                     np.log10(self.clusters[:,0]), 0.0)
 
             # Take Log10 of Cell E
             self.cells[:,:,0] = np.where(self.cells[:,:,0] > 0.0,
-                                    np.log10(self.cells[:,:,0]), 0.0 )
+                                         np.log10(self.cells[:,:,0]), 0.0 )
 
+
+            print(np.shape(self.clusters))
             if params.save_json:
                 save_norm_dict(self.cells, self.clusters, nmax=-1)
+
+            print(np.shape(self.cells))
+            self.clusters = torch.from_numpy(self.clusters)
+            self.cells = torch.from_numpy(self.cells)
+
+            print("SHAPE AFTER TORCH CONVERSION")
+            print(self.clusters.shape)
 
             self.norm_dict = LoadJson(f'preprocessing_{npart}.json')
 
@@ -137,7 +167,7 @@ class ColliderDataset(Dataset
 
             # Maybe we should add preprocessing BACK as a class method
             self.cells, self.clusters, self.conditionals = preprocessing(self.cells, self.clusters, 
-                                                          self.norm_dict, self.n_cond)
+                                                                         self.norm_dict, self.n_cond)
 
             # cell data is 0-padded
             self.mask = np.expand_dims(particles[:,:,-1],-1)
@@ -195,8 +225,8 @@ class ColliderDataset(Dataset
             self.file['clusters'].read_direct(self.cluster_buff)
 
             self.file['clusters'].read_direct(self.cluster_buff,
-                                          np.s_[index]
-                                          np.s_[index])
+                                              np.s_[index],
+                                              np.s_[index])
             #FIXME: Finish implementing from disk. Depends on chunk of HDF5, and N files...
 
 
@@ -206,7 +236,9 @@ def save_norm_dict(cells, clusters, nmax=200_000):
 
     npart = cells.shape[1]
 
-    mask = cells[:,-1] == 1 #saves array of BOOLS instead of ints
+    mask = cells[:,:,-1] == 1 #saves array of BOOLS instead of ints
+    ic(np.shape(mask))
+    ic(np.shape(cells))
     print(f" calc_norm_dict L221: Masked \
     {np.shape(cells[mask])[0]} / {len(mask)} cells")
 
@@ -262,7 +294,7 @@ def conditionals_from_cluster(clusters, num_condition):
     clusters = clusters[num_condition:]
 
     return conditions, clusters
-    
+
 
 
 def logit(x):                            
@@ -329,7 +361,7 @@ def ReversePrep(cells, clusters, npart):
 
 def Recenter(particles):
     ''' FIXME: adapt for layer-normalized cellE '''
-    
+
     px = particles[:,:,2]*np.cos(particles[:,:,1])
     py = particles[:,:,2]*np.sin(particles[:,:,1])
     pz = particles[:,:,2]*np.sinh(particles[:,:,0])
@@ -337,7 +369,7 @@ def Recenter(particles):
     jet_px = np.sum(px,1)
     jet_py = np.sum(py,1)
     jet_pz = np.sum(pz,1)
-    
+
     jet_pt = np.sqrt(jet_px**2 + jet_py**2)
     jet_phi = np.ma.arctan2(jet_py,jet_px).filled(0)
     jet_eta = np.ma.arcsinh(np.ma.divide(jet_pz,jet_pt).filled(0))
@@ -351,8 +383,9 @@ def Recenter(particles):
 
 def SimpleLoader(data_path,
                  labels,
-                 ncluster_var = 2,
-                 num_condition = 2):
+                 ncluster_var=2,
+                 num_condition=2):
+    ''' not implemented yet. 5/2/2024'''
 
     cells = []
     clusters = []

@@ -7,66 +7,75 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
 import utils
 import data_loading
+from data_loading import get_data_loader
 import time
 import sys
-import data_loading
 sys.path.insert(1, '../models/')
 from point_cloud_diffusion import PCD
+from yaml_loader import YParams
 # from GSGM_distill import GSGM_distill
 
 torch.manual_seed(1233)
 
 if __name__ == "__main__":
+
+    # Flags for running env vars (e.g. rank)
+    # Params for configuration options
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', default='../configs/config_cluster.json',
+    parser.add_argument('--config', default='../configs/default_config.yaml',
                         help='Config file with training parameters')
-
-    parser.add_argument('--data_path', default='../data/',
-                        help='Path containing the training files')
-
-    parser.add_argument('--distill', action='store_true',
-                        default=False, help='Use the distillation model')
-
-    parser.add_argument('--big', action='store_true', default=False,
-                        help='Use bigger dataset (1000 particles) \
-                        as opposed to 200 particles')
-
-    parser.add_argument('--factor', type=int, default=1,
-                        help='Step reduction for distillation model')
-
-    parser.add_argument('--local_rank', type=int, default=0,
-                        help='Local rank for DDP')
 
     flags = parser.parse_args()
 
-    # dist.init_process_group(backend='nccl')
-    # torch.cuda.set_device(flags.local_rank)
-
     config = utils.LoadJson(flags.config)
 
-    assert flags.factor % 2 == 0 or flags.factor == 1,\
+    # Model, Training, and Input Parameters
+    params = YParams(flags.config)
+
+    assert params.distill_factor % 2 == 0 or params.model.distill_factor == 1,\
     "Distillation reduction steps needs to be even"
 
-    if flags.big:
-        labels = utils.labels1000
-        npart = 1000
-    else:
+    npart = params.n_part_max
+
+    if npart == 200:
         labels = utils.labels200
-        npart = 200
 
-    data_size, training_data, test_data = data_loading.MainDataLoader(flags.data_path,
-                                                           labels,
-                                                           npart,
-                                                           # dist.get_rank(),
-                                                           # dist.get_world_size(),
-                                                           config['NUM_CLUS'],
-                                                           config['NUM_COND'],
-                                                           config['BATCH'])
+    elif npart == 1000:
+        labels = utils.labels1000
 
-    model = PCD(config=config, npart=npart).cuda()
+    world_rank = 0
+    local_rank = 0
 
+    if params.distributed:
+        torch.distributed.init_process_group(backend='nccl',
+                                         init_method='env://')
+        world_rank = torch.distributed.get_rank()
+        local_rank = int(os.environ['LOCAL_RANK'])
+
+    if args.local_batch_size:
+      # Manually override batch size
+        params.local_batch_size = args.local_batch_size
+        params.update({"global_batch_size" : world_size*args.local_batch_size})
+    else:
+        # Compute local batch size based on number of ranks
+        params.local_batch_size = params.global_batch_size//world_size
+
+    train_loader, val_loader = get_data_loader(params, world_rank, device=0)
+
+    # data_size, training_data, test_data = data_loading.MainDataLoader(flags.data_path,
+    #                                                        labels,
+    #                                                        npart,
+    #                                                        # dist.get_rank(),
+    #                                                        # dist.get_world_size(),
+    #                                                        config['NUM_CLUS'],
+    #                                                        config['NUM_COND'],
+    #                                                        config['BATCH'])
+
+    model = PCD(config_file=flags.config, npart=npart).cuda()
     model_name = config['MODEL_NAME']
-    if flags.big:
+
+    if params.big:
         model_name += '_big'
     checkpoint_folder = '../checkpoints_{}/checkpoint'.format(model_name)
 
@@ -105,6 +114,7 @@ if __name__ == "__main__":
     # loss = model.custom_loss(outputs, targets)
 
     start_time = time.time()
+
 
     # Optimizer
     optimizer = optim.Adamax(model.parameters(), lr=config['LR'])
