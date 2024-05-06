@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import yaml
 import h5py as h5
@@ -6,6 +7,7 @@ import numpy as np
 from sklearn.utils import shuffle
 import torch
 from torch.utils.data import Dataset, TensorDataset, DataLoader, DistributedSampler
+from torch.utils.data import Sampler
 from icecream import ic
 # from plotting import *  #keep for plotting part of loader
 
@@ -34,8 +36,13 @@ def get_data_loader(params, world_rank, device=0):
     train_data = ColliderDataset(params, validation=False)
     val_data   = ColliderDataset(params, validation=True )
 
-    train_sampler = DistributedSampler(train_data)
-    val_sampler   = DistributedSampler( val_data )
+    if params.distributed:
+        train_sampler = DistributedSampler(train_data)
+        val_sampler   = DistributedSampler( val_data )
+    else:
+        train_sampler = Sampler(train_data)
+        val_sampler   = Sampler( val_data )
+
 
 
     train_loader = DataLoader(train_data,
@@ -68,8 +75,8 @@ class ColliderDataset(Dataset):
                  make_tf_data=True,
                  split=0.8):
 
-        self.n_cluster_feat = params.n_clust_feat
-        self.n_cond = 2
+        self.n_cluster_feat = params.N_clust_feat
+        self.n_cond = params.NUM_COND
         self.inmem = True  # loads all data into memory
         self.data_path = params.data_path
 
@@ -135,59 +142,60 @@ class ColliderDataset(Dataset):
 
                     self.cells.append(cell)
                     self.clusters.append(cluster)
-                    print(np.shape(self.cells))
 
             self.clusters = np.concatenate(self.clusters)
             self.cells = np.concatenate(self.cells)
-            print(np.shape(self.cells))
 
             # Take Log10 of GenP
-            self.clusters = np.where(self.clusters[:,0] > 0.0, 
+            ic(np.shape(self.clusters))
+            self.clusters[:,0] = np.where(self.clusters[:,0] > 0.0, 
                                      np.log10(self.clusters[:,0]), 0.0)
+            ic(np.shape(self.clusters))
 
             # Take Log10 of Cell E
             self.cells[:,:,0] = np.where(self.cells[:,:,0] > 0.0,
                                          np.log10(self.cells[:,:,0]), 0.0 )
 
 
-            print(np.shape(self.clusters))
             if params.save_json:
                 save_norm_dict(self.cells, self.clusters, nmax=-1)
 
-            print(np.shape(self.cells))
-            self.clusters = torch.from_numpy(self.clusters)
-            self.cells = torch.from_numpy(self.cells)
 
-            print("SHAPE AFTER TORCH CONVERSION")
-            print(self.clusters.shape)
+            self.norm_dict = LoadJson(f'preprocessing_{params.npart}.json')
 
-            self.norm_dict = LoadJson(f'preprocessing_{npart}.json')
-
-            self.cells, self.clusters = shuffle(self.particles, self.cells, random_state=0)
+            self.cells, self.clusters = shuffle(self.cells,
+                                                self.clusters, random_state=0)
 
             # Maybe we should add preprocessing BACK as a class method
-            self.cells, self.clusters, self.conditionals = preprocessing(self.cells, self.clusters, 
-                                                                         self.norm_dict, self.n_cond)
+            ic()
+            ic(self.cells[0,0,0])
+            ic(np.mean(self.cells))
+            ic(self.conditions)
+            self.cells, self.clusters, self.conditions = \
+            preprocessing(self.cells, self.clusters,  #just changed
+                          self.norm_dict, params.NUM_COND)
+            ic(self.conditions)
+            ic(self.cells[0,0,0])
+            ic(np.mean(self.cells))
+            ic(np.std(self.cells[:,:,-2]))
 
             # cell data is 0-padded
-            self.mask = np.expand_dims(particles[:,:,-1],-1)
-            self.cells = self.cells[:,:,:-1]*mask
+            self.mask = np.expand_dims(self.cells[:,:,-1],-1)
+            self.cells = self.cells[:,:,:-1]*self.mask
 
-
-            #Finally, convert to Torch Tensor
+            # Finally, convert to Torch Tensor
             self.cells = torch.from_numpy(self.cells)
             self.clusters = torch.from_numpy(self.clusters)
-            self.conditionals = torch.from_numpy(self.conditionals)
+            self.conditionals = torch.from_numpy(self.conditions)
             self.mask = torch.from_numpy(self.mask)
 
             # FIXME: need to return part,jet,cond,mask
-
             print("#"*40)
-            print("CELLs in DATALOADER = ",cells)
+            print("CELLs in DATALOADER = ", self.cells)
             print("-"*40)
-            print("Clusters in DATALOADER = ",clusters)
+            print("Clusters in DATALOADER = ", self.clusters)
             print("-"*40)
-            print("Conditionals in DATALOADER = ",conditions)
+            print("Conditionals in DATALOADER = ", self.conditions)
             print("#"*40)
 
 
@@ -207,7 +215,7 @@ class ColliderDataset(Dataset):
                                       dtype=np.float32)
 
     def _open_file(self):
-        self.file = h5py.File(self.file_name, 'r')
+        self.file = h5.File(self.file_name, 'r')
 
     def __len__(self):
         return self.Nsamples
@@ -239,6 +247,7 @@ def save_norm_dict(cells, clusters, nmax=200_000):
     mask = cells[:,:,-1] == 1 #saves array of BOOLS instead of ints
     ic(np.shape(mask))
     ic(np.shape(cells))
+    ic(np.shape(clusters))
     print(f" calc_norm_dict L221: Masked \
     {np.shape(cells[mask])[0]} / {len(mask)} cells")
 
@@ -255,43 +264,51 @@ def save_norm_dict(cells, clusters, nmax=200_000):
     SaveJson(f'preprocessing_{npart}.json', data_dict)
 
 
-def preprocessing(cells, clusters, data_dict, num_condition):
+def preprocessing(cells, clusters,
+                  data_dict, num_condition):
 
     ''' transforms features to standard normal distributions '''
     ''' we often want acces to this function outside of the class'''
 
     npart = cells.shape[1]
 
-    cells=cells.reshape(-1,cells.shape[-1]) #flattens D0 and D1
+    ic(np.shape(cells))
+    # cells = cells.reshape(-1, cells.shape[-1])  # flattens D0 and D1
 
-    conditionals, clusters = conditionals_from_cluster(clusters)
-
-    # normalize the data, mimics StandardScalar, or z-scoring
+    # Make range of features 0-1
     clusters[:,:] = np.ma.divide(
         (clusters[:,:] - data_dict['min_cluster']),
         (np.array(data_dict['max_cluster']) - data_dict['min_cluster'])
     ).filled(0)        
 
-    cells[:,:-1] = np.ma.divide(
-        cells[:,:-1]-data_dict['min_cell'],
+    cells[:,:,:-1] = np.ma.divide(
+        cells[:,:,:-1]-data_dict['min_cell'],
         np.array(data_dict['max_cell']) - data_dict['min_cell']
     ).filled(0)
 
-    # make gaus-like. 
+    # make gaus-like.
     clusters = logit(clusters)
-    cells[:,:-1] = logit(cells[:,:-1])
+    cells[:,:,:-1] = logit(cells[:,:,:-1])  #don't logit MASK
+
+    # We normalize the conditions as well. Put this line 
+    # Earlier if conditional information is CLASS (e.g. W,Z boson)
+    conditions, clusters = conditions_from_cluster(clusters, num_condition)
+    ic(conditions)
 
     print(f"\nL Shape of Cells in DataLoader = {np.shape(cells)}") 
     print(f"\nL Cells in DataLoader = \n{cells[0,15:20,:]}")
+    ic(cells[0,0,0])
 
-    return cells.astype(np.float32), clusters.astype(np.float32), conditionals.astype(np.float32)
+    return cells.astype(np.float32),\
+           clusters.astype(np.float32),\
+           conditions.astype(np.float32)
     # END _preprocessing
 
 
-def conditionals_from_cluster(clusters, num_condition):
+def conditions_from_cluster(clusters, num_condition):
 
-    conditions = clusters[:num_condition]
-    clusters = clusters[num_condition:]
+    conditions = clusters[:,:num_condition]
+    clusters = clusters[:,num_condition:]
 
     return conditions, clusters
 

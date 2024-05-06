@@ -24,20 +24,26 @@ from models import point_cloud_diffusion
 def train(params, args, local_rank, world_rank, world_size):
     # set device and benchmark mode
     torch.backends.cudnn.benchmark = True
-    torch.cuda.set_device(local_rank)
+    # torch.cuda.set_device(local_rank)
     device = torch.device('cuda:%d'%local_rank)
 
     # get data loader
     logging.info('rank %d, begin data loader init'%world_rank)
     train_data_loader, val_data_loader = data_loading.get_data_loader(params, world_rank, device.index)
-    logging.info('rank %d, data loader initialized with config %s'%(world_rank, params.data_loader_config))
+    logging.info(f'rank {world_rank}')
+    logging.info(f'data loader initialized with config {params.config_name}')
 
     # create model
-    model = point_cloud_diffusion.PCD(params).to(device)
-    model.apply(model.get_weights_function(params.weight_init))
+    model = point_cloud_diffusion.PCD(params)
+    # model = point_cloud_diffusion.PCD(params).to(device)
 
-    model = DistributedDataParallel(model, device_ids=[local_rank],
-                                    bucket_cap_mb=args.bucket_cap_mb)
+    # FIXME: get weight initialization working for distributed
+    # print(model.get_weights_function)
+    # model.apply(model.get_weights_function())
+
+    if params.distributed:
+        model = DistributedDataParallel(model, device_ids=[local_rank],
+                                        bucket_cap_mb=args.bucket_cap_mb)
 
     optimizer = optim.Adam(model.parameters(), lr = params.lr_schedule['start_lr'])
 
@@ -182,7 +188,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_num", default='00', type=str, help='tag for indexing the current experiment')
-    parser.add_argument("--yaml_config", default='../configs/default_config.yaml', type=str, help='path to yaml file containing training configs')
+    parser.add_argument("--yaml_config", default='./configs/default_config.yaml', type=str, help='path to yaml file containing training configs')
     parser.add_argument("--config", default='base', type=str, help='name of desired config in yaml file')
     parser.add_argument("--amp_mode", default='none', type=str, choices=['none', 'fp16', 'bf16'], help='select automatic mixed precision mode')  
     parser.add_argument("--enable_apex", action='store_true', help='enable apex fused Adam optimizer')
