@@ -1,10 +1,12 @@
+config_name        : default
+
 # Data and Inputs
-data_path          : "../data/"
+data_path          : "./data/"
 files              : ['G4_5x5_smeared.h5']
-n_cell_feat        : 4
-n_clust_feat       : 2
+N_cell_feat        : 4
+N_clust_feat       : 2
 NUM_COND           : 1
-N_samples     : -1  # -1 for all events
+N_samples     : 10000  # -1 for all events
 npart              : 200  #up to 1000
 train_fraction     : 0.7 #FIXME: add test split
 val_fraction       : 0.2
@@ -12,7 +14,8 @@ test_fraction      : 0.1
 save_json          : True
 
 # Training
-distributed        : True  #augmented in py, according to RANK
+distributed        : False  #augmented in py, according to RANK
+num_data_workers   : 1
 global_batch_size  : 128 # number of samples per training batch
 base_batch_size    : 128 # single GPU batch size
 BATCH              : 128
