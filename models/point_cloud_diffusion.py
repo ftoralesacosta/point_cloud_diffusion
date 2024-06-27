@@ -1,8 +1,7 @@
 import torch
 import numpy as np
-import yaml
 import torch.nn as nn
-from deepsets import DeepSetsAtt
+from models.deepsets import DeepSetsAtt
 import torch.nn.functional as F
 
 activation = nn.LeakyReLU(0.01)
@@ -11,21 +10,15 @@ activation = nn.LeakyReLU(0.01)
 class PCD(nn.Module):  # Point Cloud Diffusion
     """Score based generative model"""
 
-    def __init__(self, name='SGM', npart=30, config_file=None, factor=1):
-        super(PCD, self).__init__()
-
-        if config_file is None:
-            raise ValueError("\nPCD Module L18: Config File must be specified\n")
-
-        config = yaml.safe_load(open(config_file))
-        self.config = config
+    def __init__(self, params, factor=1):
+        super().__init__()
 
         self.factor = factor
-        self.num_feat = self.config['NUM_FEAT']
-        self.num_cluster = self.config['NUM_CLUS']  # number of cluster features
-        self.num_cond = self.config['NUM_COND']
-        self.num_embed = self.config['EMBED']
-        self.num_steps = self.config['MAX_STEPS'] // self.factor
+        self.num_feat = params.N_cell_feat
+        self.num_cluster = params.N_clust_feat
+        self.num_cond = params.NUM_COND
+        self.num_embed = params.EMBED
+        self.num_steps = params.MAX_STEPS
         self.ema = 0.999
 
         # Diffusion TimeSteps
@@ -43,6 +36,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.loss_tracker = nn.MSELoss()
         self.activation = nn.LeakyReLU(0.01)
 
+        # linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
         graph_emb_size = self.num_embed + self.num_cluster + self.num_cond
         cluster_emb_size = self.num_embed + self.num_cond
 
@@ -134,12 +128,17 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.posterior_mean_coef2 = (1 - alphas_cumprod_prev) * \
             torch.sqrt(alphas) / (1. - self.alphas_cumprod)
 
-
     def GaussianFourierProjection(self):
         half_dim = self.num_embed // 4
         emb = torch.log(torch.tensor(10000.0)) / (half_dim - 1)
         freq = torch.exp(-emb * torch.arange(0, half_dim, dtype=torch.float32))
         return freq
+
+    def get_weights_function(self):
+        def weights_init(m):
+            # classname = m.__class__.__name__
+            nn.init.normal_(m.weight.data, 0.0)
+        return weights_init
 
 
 class Embedding(nn.Module):
@@ -172,3 +171,8 @@ class Embedding(nn.Module):
     # num_params = count_parameters(self.model_part)
     # print("Number of parameters: {:,}".format(num_params))
     # Number of parameters: 314,372
+    def get_weights_function(self):
+        def weights_init(m):
+            # classname = m.__class__.__name__
+            nn.init.normal_(m.weight.data, 0.0)
+        return weights_init

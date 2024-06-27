@@ -1,11 +1,35 @@
-NUM_FEAT    : 4
-NUM_CLUS    : 2
-NUM_COND    : 1
-BATCH       : 128
-LR          : 0.0001
-MAXEPOCH    : 300
+config_name        : default
 
-EARLYSTOP   : 20
-EMBED       : 64
-MAX_STEPS   : 512
-MODEL_NAME  : 'GSGM_ansh'
+# Data and Inputs
+data_path          : "./data/"
+files              : ['G4_5x5_smeared.h5']
+N_cell_feat        : 4
+N_clust_feat       : 2
+NUM_COND           : 1
+N_samples     : 10000  # -1 for all events
+npart              : 200  #up to 1000
+train_fraction     : 0.7 #FIXME: add test split
+val_fraction       : 0.2
+test_fraction      : 0.1
+save_json          : True
+
+# Training
+distributed        : False  #augmented in py, according to RANK
+num_data_workers   : 1
+global_batch_size  : 128 # number of samples per training batch
+base_batch_size    : 128 # single GPU batch size
+BATCH              : 128
+LR                 : 0.0001
+num_epochs         : 300
+EARLYSTOP          : 20
+lr_schedule        : {scaling: 'sqrt', start_lr: 2.E-4, end_lr: 0., warmup_steps: 128}
+
+# Model Params
+EMBED              : 64
+MAX_STEPS          : 512
+MODEL_NAME         : 'GSGM'
+distill            : False
+distill_factor     : 2
+amp_mode           : none
+
+expdir: './logs'
