@@ -100,8 +100,15 @@ if __name__ == "__main__":
     )
 
     loss_fn = nn.MSELoss()
-    FIXME: Do the below instead. You'll have to finish the GSGM Class tomorrow!!!
-    loss = model.custom_loss(outputs, targets)
+    # FIXME: Do the below instead. You'll have to finish the GSGM Class tomorrow!!!
+    # loss = model.custom_loss(outputs, targets)
+
+    z = tf.random.normal((tf.shape(part)),dtype=tf.float32)*mask
+    perturbed_x = alpha_reshape*part + z * sigma_reshape
+    pred = self.model_part([perturbed_x*mask, random_t,jet,cond,mask])
+    v = alpha_reshape * z - sigma_reshape * part
+    losses = tf.square(pred - v)*mask
+    loss_part = tf.reduce_mean(tf.reshape(losses,(tf.shape(losses)[0], -1)))
 
     start_time = time.time()
 

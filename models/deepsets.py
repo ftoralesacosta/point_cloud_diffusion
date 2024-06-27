@@ -30,22 +30,30 @@ class DeepSetsAtt(nn.Module):
         self.output_dense = nn.Linear(projection_dim, num_feat)
 
     def forward(self, inputs, time_embedding, mask=None):
-        # Process time embedding
-        print(inputs.size())
-        time_info = self.time_dense1(time_embedding)
-        print(inputs.size())
-        time_info = self.time_activation1(time_info)
-        print(inputs.size())
-        time_info = self.time_dense2(time_info)
-        print(inputs.size())
-        time_info = time_info.unsqueeze(1).repeat(1, inputs.size(1), 1)
-        print(inputs.size())
+        # time_embedding is actually all conditional embeddings
+        # time just being one of the conditions
+        # inputs is the actual particle data
+        cond_info = self.time_dense1(time_embedding)
+        cond_info = self.time_activation1(cond_info)
+        cond_info = self.time_dense2(cond_info)
+
+        cond_info = cond_info.unsqueeze(1)
+        cond_info = cond_info.repeat(1, inputs.size(1), 1)
+
+        # conditioning info is [batch, projection_dim].
+        # Need to combine with particle dataste shape
+        # (batch, num_part, projection_dim)
+        # make a middle dim first with reshape: [batch, 1, projection].
+        # tile: repeat to be [batch, particle_dim, projection].
+        # Repeate particle dim for 1-dim. Ex. need repeat
+        # time num_part times to apply to each particle.
 
         # Combine inputs and time information
         print("\n\n forward pass in deepsets.py")
         print(inputs.size())
-        print(time_info.size())
-        combined_inputs = torch.cat([inputs, time_info], dim=-1)
+        print(cond_info.size())
+        combined_inputs = torch.cat([inputs, cond_info], dim=-1)
+        # FIXME: Trouble here
 
         tdd = self.patch_dense(combined_inputs)
         tdd = self.patch_activation(tdd)
@@ -87,4 +95,3 @@ class TransformerBlock(nn.Module):
 # Example usage:
 # model = DeepSetsAtt(num_feat=4, time_embedding_dim=64)
 # outputs = model(inputs_tensor, time_embedding_tensor, mask_tensor)
-
