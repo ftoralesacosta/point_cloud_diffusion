@@ -19,7 +19,6 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.num_cond = params.NUM_COND
         self.num_embed = params.EMBED
         self.num_steps = params.MAX_STEPS
-
         self.ema = 0.999
 
         # Diffusion TimeSteps
@@ -30,35 +29,36 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         self.Set_alpha_beta_posterior()
 
         projection_dim = 16
+
         # Random Fourier Features, to concat with input
         self.projection = self.GaussianFourierProjection()
 
         self.loss_tracker = nn.MSELoss()
-        # keras.metrics.Mean(name="loss")
+        self.activation = nn.LeakyReLU(0.01)
 
         # linear1_input_size = self.num_embed + self.num_cluster + self.num_cond
         graph_emb_size = self.num_embed + self.num_cluster + self.num_cond
         cluster_emb_size = self.num_embed + self.num_cond
 
-        self.activation = nn.LeakyReLU(0.01)
+        # Define GRAPH Embedding, for CELLS
+        self.graph_embedding = Embedding(projection_dim, self.num_embed)
+        self.graph_linear = nn.Linear(graph_emb_size, self.num_embed)
+        self.graph_activation = self.activation
 
-        # DEFNE GRAPH Embedding
-        self.graph_embedding1 = Embedding(projection_dim, self.num_embed)
-        self.graph_linear1 = nn.Linear(graph_emb_size, self.num_embed)
-        self.graph_activation1 = self.activation
-
-        # DEFINE CLUSTER Embedding
-        self.cluster_embedding1 = Embedding(projection_dim, self.num_embed)
-        self.cluster_linear1 = nn.Linear(cluster_emb_size, self.num_embed)
-        self.cluster_activation1 = self.activation
-
+        # Define Deepsets+Transformers for CELLS model
         self.ds_attention_layer = DeepSetsAtt(
             num_feat=self.num_embed,
             time_embedding_dim=self.num_embed,
             num_heads=1,
             num_transformer=8,
             projection_dim=64)
-            # time_embedding=graph_conditional,
+
+        # Define CLUSTER Embedding
+        self.cluster_embedding = Embedding(projection_dim, self.num_embed)
+        self.cluster_linear = nn.Linear(cluster_emb_size, self.num_embed)
+        self.cluster_activation = self.activation
+
+        # Define ResNet Layers  for cluster model
 
     def forward(self,
                 training_data,
@@ -73,15 +73,15 @@ class PCD(nn.Module):  # Point Cloud Diffusion
         # And then pass the input_data, and input_times + cluster stuff
 
         # Graph Forward Pass
-        graph_conditional = self.graph_embedding1(inputs_time, self.projection)
-        graph_inputs = torch.cat([graph_conditional,inputs_cluster,inputs_cond],-1)
-        graph_conditional = self.graph_linear1(graph_inputs)
+        graph_conditional = self.graph_embedding(inputs_time, self.projection)
+        graph_inputs = torch.cat([graph_conditional,inputs_cluster,inputs_cond], -1)
+        graph_conditional = self.graph_linear(graph_inputs)
         graph_conditional = self.activation(graph_conditional)
 
         # Cluster Forward Pass
-        cluster_conditional = self.cluster_embedding1(inputs_time, self.projection)
+        cluster_conditional = self.cluster_embedding(inputs_time, self.projection)
         cluster_inputs = torch.cat([cluster_conditional, inputs_cond], -1)
-        cluster_conditional = self.cluster_linear1(cluster_inputs)
+        cluster_conditional = self.cluster_linear(cluster_inputs)
         cluster_conditional = self.activation(cluster_conditional)
 
         # Define DeepSets Attention Layers
@@ -142,6 +142,7 @@ class PCD(nn.Module):  # Point Cloud Diffusion
 
 
 class Embedding(nn.Module):
+
     def __init__(self, projection_dim, num_embed):
         super(Embedding, self).__init__()
 
