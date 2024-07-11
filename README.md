@@ -12,4 +12,6 @@ https://github.com/ViniciusMikuni/GSGM
 2. Switching to PyTorch for (hopefully) better legibility and modularity. Ideally, this could be used as a basis for larger point cloud diffusion projects, such as whole EIC event generation.
 
 
+## Running
+I'm using python modules for the nested directories, mainly `models` and `utils`. Please use the training scripts in the main directory, e.g. `train_distributed.py`. Will add more instructions as things develop.
 If you're reading this sentence, then this repo is still very much work in progress, and likely doesn't train just yet.

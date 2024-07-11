@@ -47,23 +47,14 @@ def train(params, args, local_rank, world_rank, world_size):
 
     optimizer = optim.Adam(model.parameters(), lr = params.lr_schedule['start_lr'])
 
-    if params.enable_jit:
-        model_handle = model.module if (params.distributed and not args.noddp) else model
-        model_handle = torch.jit.script(model_handle)  
-
-    # select loss function
-    if params.enable_jit:
-        loss_func = UNet.loss_func_opt_final
-        lambda_rho = torch.zeros((1,5,1,1,1), dtype=torch.float32).to(device)
-        lambda_rho[:,0,:,:,:] = params.lambda_rho
-    else:
-        loss_func = UNet.loss_func
-        lambda_rho = params.lambda_rho
+    loss_func = UNet.loss_func
+    lambda_rho = params.lambda_rho
 
     # start training
     iters = 0
     startEpoch = 0
-    params.lr_schedule['tot_steps'] = params.num_epochs*(params.Nsamples//params.global_batch_size)
+    params.lr_schedule['tot_steps'] = params.num_epochs*\
+        (params.Nsamples//params.global_batch_size)
 
     if world_rank==0: 
         logging.info("Starting Training Loop...")
@@ -75,9 +66,11 @@ def train(params, args, local_rank, world_rank, world_size):
         tr_loss = loss_func(model(inp), tar, lambda_rho)
         inp, tar = map(lambda x: x.to(device), next(iter(val_data_loader)))
         val_loss= loss_func(model(inp), tar, lambda_rho)
+
         if params.distributed:
             torch.distributed.all_reduce(tr_loss)
             torch.distributed.all_reduce(val_loss)
+
         if world_rank==0:
             args.tboard_writer.add_scalar('Loss/train', tr_loss.item()/world_size, 0)
             args.tboard_writer.add_scalar('Loss/valid', val_loss.item()/world_size, 0)
@@ -116,7 +109,9 @@ def train(params, args, local_rank, world_rank, world_size):
         tr_start = time.time()
         b_size = inp.size(0)
 
-        lr_schedule(optimizer, iters, global_bs=params.global_batch_size, base_bs=params.base_batch_size, **params.lr_schedule)
+        lr_schedule(optimizer, iters,
+                    global_bs=params.global_batch_size,
+                    base_bs=params.base_batch_size, **params.lr_schedule)
         optimizer.zero_grad()
 
         if args.enable_manual_profiling: torch.cuda.nvtx.range_push(f"forward")
@@ -127,7 +122,7 @@ def train(params, args, local_rank, world_rank, world_size):
             tr_loss.append(loss.item())
         if args.enable_manual_profiling: torch.cuda.nvtx.range_pop() #forward
 
-        if params.amp_dtype == torch.float16: 
+        if params.amp_dtype == torch.float16:
             scaler.scale(loss).backward()
             if args.enable_manual_profiling: torch.cuda.nvtx.range_push(f"optimizer")
             scaler.step(optimizer)
