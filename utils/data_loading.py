@@ -8,7 +8,9 @@ from sklearn.utils import shuffle
 import torch
 from torch.utils.data import Dataset, TensorDataset, DataLoader, DistributedSampler
 from torch.utils.data import Sampler
+from torch.utils.data import SequentialSampler, RandomSampler
 from icecream import ic
+ic.configureOutput(includeContext=True)
 # from plotting import *  #keep for plotting part of loader
 
 np.random.seed(0)  # fix the seed to keep track of validation split
@@ -40,8 +42,8 @@ def get_data_loader(params, world_rank, device=0):
         train_sampler = DistributedSampler(train_data)
         val_sampler   = DistributedSampler( val_data )
     else:
-        train_sampler = Sampler(train_data)
-        val_sampler   = Sampler( val_data )
+        train_sampler = SequentialSampler(train_data)
+        val_sampler   = SequentialSampler( val_data )
 
 
 
@@ -93,18 +95,19 @@ class ColliderDataset(Dataset):
 
         #FIXME: add test case!
 
+        self.file = None
         print(params.files[0])
         self.file_name = params.files[0]
         # FIXME: for multiple h5 files, save the filenames, 
 
-        n_total = params.N_samples
+        self.n_total = params.N_samples
         if params.N_samples == -1:
             for file in params.files:
                 with h5.File(os.path.join(params.data_path,
                                       self.file_name),'r') as h5file:
 
-                    n_total += h5file['cluster'][:].shape[0]
-                    params.update({"N_samples": n_total})
+                    self.n_total += h5file['cluster'][:].shape[0]
+                    params.update({"N_samples": self.n_total})
 
             #Need the size of the resulting partition for train/val
             #Need the total number of events in the hdf5 file for above
@@ -218,7 +221,7 @@ class ColliderDataset(Dataset):
         self.file = h5.File(self.file_name, 'r')
 
     def __len__(self):
-        return self.Nsamples
+        return self.n_total
 
     def __getitem__(self, index):
 
@@ -227,6 +230,8 @@ class ColliderDataset(Dataset):
 
         if self.inmem:
 
+            # ic(index)
+            # ic(len(self.cells))
             return (self.cells[index], self.clusters[index], self.conditionals[index], self.mask[index])
 
         else:
