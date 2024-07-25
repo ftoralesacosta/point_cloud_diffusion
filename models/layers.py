@@ -164,13 +164,14 @@ class TalkingHeadAttention(nn.Module):
         if int_matrix is not None:
             attn += int_matrix
 
-        # Linear projection of the similarities between the query and key projections.
+        # Linear projection of the similarities between
+        # the query and key projections.
         attn = attn.permute(0, 2, 3, 1)
         attn = self.proj_l(attn)
-        
+
         # Normalize the attention scores.
         attn = attn.permute(0, 3, 1, 2)
-        
+
         if mask is not None:
             mask = mask.to(dtype=attn.dtype)
             mask = mask.unsqueeze(1).unsqueeze(1)
@@ -193,8 +194,22 @@ class TalkingHeadAttention(nn.Module):
         return x, attn
 
 
-####### TESTS #######
-# Test the SimpleHeadAttention class
+class LayerScale(nn.Module):
+    def __init__(self, init_values, projection_dim):
+        super(LayerScale, self).__init__()
+        self.gamma = nn.Parameter(init_values * torch.ones(projection_dim),
+                                  requires_grad=True)
+
+    def forward(self, inputs, mask=None):
+        if mask is not None:
+            return inputs * self.gamma * mask
+        else:
+            return inputs * self.gamma
+
+
+# TESTS ------------------------------------
+
+
 def test_simple_head_attention():
     batch_size = 2
     seq_length = 4
@@ -207,15 +222,15 @@ def test_simple_head_attention():
     output, attn = model(x, training=True)
 
     # Check the output shape
-    assert output.shape == (batch_size, seq_length, projection_dim), f"Output shape mismatch: {output.shape}"
+    assert output.shape == (batch_size, seq_length, projection_dim),\
+        f"Output shape mismatch: {output.shape}"
+
     # Check the attention shape
-    assert attn.shape == (batch_size, num_heads, seq_length, seq_length), f"Attention shape mismatch: {attn.shape}"
+    assert attn.shape == (batch_size, num_heads, seq_length, seq_length),\
+        f"Attention shape mismatch: {attn.shape}"
     print("SimpleHeadAttention test passed!")
 
-# Run the test
-test_simple_head_attention()
 
-# Test the TalkingHeadAttention class
 def test_talking_head_attention():
     batch_size = 2
     seq_length = 4
@@ -228,10 +243,32 @@ def test_talking_head_attention():
     output, attn = model(x)
 
     # Check the output shape
-    assert output.shape == (batch_size, seq_length, projection_dim), f"Output shape mismatch: {output.shape}"
+    assert output.shape == (batch_size, seq_length, projection_dim),\
+        f"Output shape mismatch: {output.shape}"
+
     # Check the attention shape
-    assert attn.shape == (batch_size, num_heads, seq_length, seq_length), f"Attention shape mismatch: {attn.shape}"
+    assert attn.shape == (batch_size, num_heads, seq_length, seq_length),\
+        f"Attention shape mismatch: {attn.shape}"
     print("TalkingHeadAttention test passed!")
 
-# Run the test
-test_talking_head_attention()
+
+def test_layer_scale():
+    batch_size = 2
+    seq_length = 4
+    projection_dim = 8
+    init_values = 0.1
+
+    model = LayerScale(init_values, projection_dim)
+    inputs = torch.randn(batch_size, seq_length, projection_dim)
+    mask = torch.ones(batch_size, seq_length, projection_dim)
+    output = model(inputs, mask)
+
+    # Check the output shape
+    assert output.shape == (batch_size, seq_length, projection_dim),\
+        f"Output shape mismatch: {output.shape}"
+
+    print("LayerScale test passed!")
+
+# Run the tests
+# test_simple_head_attention()
+# test_talking_head_attention()
